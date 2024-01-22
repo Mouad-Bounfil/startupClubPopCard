@@ -126,11 +126,10 @@ const ProfilePage: React.FC = () => {
   };
   const callPhoneNumber = () => {
     const phoneNumber = data?.data?.phone;
-    const phoneFormat = String(phoneNumber).slice(1);
 
-    console.log("phoneFormat: ", phoneFormat);
+    console.log("phoneFormat: ", phoneNumber);
 
-    const telLink = `tel:${phoneFormat}`;
+    const telLink = `tel:${phoneNumber}`;
 
     window.open(telLink, "_blank");
   };
@@ -151,6 +150,11 @@ const ProfilePage: React.FC = () => {
   const dataFromDatabase = {
     socialMedia: data?.data?.socialLinks || {},
   };
+  const webSite = () => {
+    router.push(data?.data?.website)
+  };
+
+
 
   if (error) {
     if (error?.response?.status === 300) {
@@ -385,7 +389,7 @@ const ProfilePage: React.FC = () => {
 
                   {data?.data?.email ? (
                     <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
-                      <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                      <div className="flex items-center space-x-4 rtl:space-x-reverse" onClick={sendEmail}>
                         <div className="flex-shrink-0">
                           <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
                             <svg
@@ -418,7 +422,7 @@ const ProfilePage: React.FC = () => {
 
                   {data?.data?.website ? (
                     <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
-                      <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                      <div className="flex items-center space-x-4 rtl:space-x-reverse" onClick={webSite}>
                         <div className="flex-shrink-0">
                           <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
                             <svg
