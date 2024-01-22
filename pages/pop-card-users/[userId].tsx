@@ -19,6 +19,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { LuSendHorizonal } from "react-icons/lu";
 
 import { FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 import SocialButtons from "@/components/SocialButtons";
@@ -31,6 +32,7 @@ const ProfilePage: React.FC = () => {
   const { data, isValidating, error, isLoading } = useSWR(
     `pop-card-users/${userId}`
   );
+  
 
   const [contactInfo, setContactInfo] = useState({
     fn: " ",
@@ -375,6 +377,7 @@ const ProfilePage: React.FC = () => {
                           {data?.data?.phone}
                         </p>
                       </div>
+                      <LuSendHorizonal className="w-5 h-5"/>
                     </div>
                   </li> : null}
                   
@@ -559,7 +562,7 @@ const ProfilePage: React.FC = () => {
 
 function QrCodeGenerator({ className, dataUser }: any) {
   const [disabled, setDisabled] = useState(false);
-  const UrlWebSiteForUser = `https://lastartupstation.vercel.app/pop-card-users/${dataUser[1]}`;
+  const UrlWebSiteForUser = `https://lastartup-club-popcard.vercel.app/pop-card-users/${dataUser[1]}`;
   const QrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${UrlWebSiteForUser}`;
   const [isHidden, setIsHidden] = useState(true);
 
