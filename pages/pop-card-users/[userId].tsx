@@ -450,7 +450,7 @@ const ProfilePage: React.FC = () => {
                   Work
                 </div>
                 <ul className="max-w-md divide-y divide-gray-200">
-                  {data?.data?.experiences.map((experience) => (
+                  {data?.data?.experiences && data?.data?.experiences.map((experience) => (
                     <li
                       key={experience.id}
                       className="pb-2 sm:pb-4 pt-2 animate-fade-up animate-delay-300"
