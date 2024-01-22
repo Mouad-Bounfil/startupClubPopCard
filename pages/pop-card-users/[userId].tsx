@@ -8,15 +8,28 @@ import vcf from "vcf";
 import { RWebShare } from "react-web-share";
 import { FaWhatsapp, FaGithub, FaFacebookF } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
+import { MdExpandMore } from "react-icons/md";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 import { FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 import SocialButtons from "@/components/SocialButtons";
+import { MdOutlineEventAvailable } from "react-icons/md";
+import { BsQrCode } from "react-icons/bs";
 
 const ProfilePage: React.FC = () => {
   const router = useRouter();
-  const userName = router.query.user?.toString() || "";
+  const userId = router.query.userId?.toString() || "";
   const { data, isValidating, error, isLoading } = useSWR(
-    `/user/profile/${userName}`
+    `pop-card-users/${userId}`
   );
 
   const [contactInfo, setContactInfo] = useState({
@@ -42,24 +55,24 @@ const ProfilePage: React.FC = () => {
 
   useEffect(() => {
     setContactInfo({
-      fn: `${data?.firstName} ${data?.lastName}` || " ",
+      fn: `${data?.data?.firstName} ${data?.data?.lastName}` || " ",
       photo: {
-        uri: data?.image || " ",
+        uri: data?.data?.image || " ",
         mediatype: "image/gif",
       },
       tel: [
         {
-          value: `tel:${data?.phone}` || " ",
+          value: `tel:${data?.data?.phone}` || " ",
           type: ["work", "voice"],
           valueType: "uri",
         },
         {
-          value: `tel:${data?.phone}` || " ",
+          value: `tel:${data?.data?.phone}` || " ",
           type: ["home", "voice"],
           valueType: "uri",
         },
       ],
-      email: data?.email || " ",
+      email: data?.data?.email || " ",
     });
   }, [data, isValidating]);
 
@@ -93,7 +106,7 @@ const ProfilePage: React.FC = () => {
     downloadFile(vCardData, `${contactInfo.fn}-contact.vcf`);
   };
   const shareLink = () => {
-    const message = `Check out this link: https://lastartupstation.vercel.app/profile-v2/${data?.firstName}-${data?.lastName}`;
+    const message = `Check out this link: https://lastartupstation.vercel.app/profile-v2/${data?.data?.firstName}-${data?.data?.lastName}`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappLink = `https://wa.me/?text=${encodedMessage}`;
 
@@ -102,13 +115,27 @@ const ProfilePage: React.FC = () => {
 
   const sendMessageWa = () => {
     const encodedMessage = encodeURIComponent("Hi 👋");
-    const whatsappLink = `https://wa.me/${data?.phone}?text=${encodedMessage}`;
+    const phoneNumber = data?.data?.phone;
+    const phoneFormat = String(phoneNumber).slice(1);
+
+    console.log("phoneFormat: ", phoneFormat);
+    const whatsappLink = `https://wa.me/${phoneFormat}?text=${encodedMessage}`;
 
     window.open(whatsappLink, "_blank");
   };
+  const callPhoneNumber = () => {
+    const phoneNumber = data?.data?.phone;
+    const phoneFormat = String(phoneNumber).slice(1);
+
+    console.log("phoneFormat: ", phoneFormat);
+
+    const telLink = `tel:${phoneFormat}`;
+
+    window.open(telLink, "_blank");
+};
 
   const sendEmail = () => {
-    const toEmail = `${data?.email}`;
+    const toEmail = `${data?.data?.email}`;
     const subject = "Getting to Know You 🤝🚀";
     const body =
       "Hello 👋, \n \n I hope this email finds you well.  I m reaching out to connect with you.\n Looking forward to hearing from you. \n \nBest regards";
@@ -121,7 +148,7 @@ const ProfilePage: React.FC = () => {
   };
 
   const dataFromDatabase = {
-    socialMedia: data?.socialMedia || {}, // Provide an empty object as a default if data?.socialMedia is undefined
+    socialMedia: data?.data?.socialLinks || {},
   };
 
   if (error) {
@@ -143,7 +170,9 @@ const ProfilePage: React.FC = () => {
                 </svg>
               </div>
               <div>
-                <p className="font-bold">{error?.response?.data?.message}</p>
+                <p className="font-bold">
+                  {error?.response?.data?.data?.message}
+                </p>
                 <p className="text-sm">{error?.message}</p>
               </div>
             </div>
@@ -170,7 +199,9 @@ const ProfilePage: React.FC = () => {
               </div>
               <div>
                 <p className="font-bold">User Not found </p>
-                <p className="text-sm">{error?.response?.data?.message} </p>
+                <p className="text-sm">
+                  {error?.response?.data?.data?.message}{" "}
+                </p>
               </div>
             </div>
           </div>
@@ -189,34 +220,69 @@ const ProfilePage: React.FC = () => {
   return (
     <>
       <div className="w-full h-screen  flex flex-col justify-start items-center bg-gray-200">
-        <div className=" w-[90%] shadow mt-5 bg-white  rounded-[15px] text-gray-900 animate-fade-right animate-delay-300">
+        <div className="w-[90%] flex justify-between items-center mt-5 pl-1 pr-1">
+          <a href="https://www.lastartup.club/">
+            <img
+              className="h-[40px]"
+              src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
+              alt=""
+            />
+          </a>
+
+          <Drawer>
+            <DrawerTrigger>
+              <BsQrCode className="w-8 h-8" />
+            </DrawerTrigger>
+            <DrawerContent className="h-[50%]">
+              <DrawerHeader className="flex justify-center items-center flex-col">
+                <DrawerTitle>Qr Code Generator</DrawerTitle>
+                <DrawerDescription>
+                QR Code generation in progress. This is the QR Code for that website.
+                </DrawerDescription>
+              </DrawerHeader>
+              <QrCodeGenerator
+                className="px-4"
+                dataUser={[data?.data?.fullName, data?.data?._id]}
+              />
+            </DrawerContent>
+          </Drawer>
+        </div>
+        <div className=" w-[90%] shadow mt-2 bg-whititeme  rounded-[15px] text-gray-900 animate-fade-right animate-delay-300 bg-white">
           <div className="rounded-t-[15px] h-32 overflow-hidden animate-fade-down animate-once animate-delay-300">
             <img
               className="object-cover object-top w-full"
-              src="/dark-gray-background.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/ecommerce-arkx.appspot.com/o/bg.PNG?alt=media&token=7f137af0-c6aa-4fca-baf0-dba61c1352dc"
               alt="Mountain"
             />
           </div>
           <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden animate-fade-right animate-delay-300">
             <img
               className="object-cover object-center h-32 w-full"
-              src={data?.image}
+              src={data?.data?.profilePic}
               alt="Woman looking front"
             />
           </div>
           <div className="text-center flex flex-col justify-center items-center mt-2">
             <h3 className="font-sans leading-20 text-[#0d0d0d] text-[25px] font-semibold animate-fade-left animate-once animate-delay-300">
-              {data?.firstName} {data?.lastName}
+              {data?.data?.firstName} {data?.data?.lastName}
             </h3>
             <div className="font-sans text-[#595b5a] text-[17px] font-medium animate-fade-up animate-delay-300">
-              {data?.position} at{" "}
-              <span className="text-[#0d0d0d]">{data?.Company}</span>
+              {data?.data?.jobTitle} at{" "}
+              <span className="text-[#0d0d0d]">LaStartupStation</span>
             </div>
             <div className="text-center font-sans text-[#595b5a] text-[17px] font-[400] w-[85%] mt-5 animate-fade-up animate-delay-300">
-              {data?.description}
+              {data?.data?.shortDescription.en ? (
+                data?.data?.shortDescription.en
+              ) : (
+                <div>
+                  I code dreams into reality with a touch of flair – MERN Stack
+                  Enthusiast 💻✨ | JavaScript Maestro 🚀{" "}
+                </div>
+              )}
             </div>
           </div>
           <SocialButtons
+            phone={data?.data?.phone}
             data={dataFromDatabase}
             sendMessageWa={sendMessageWa}
             sendEmail={sendEmail}
@@ -269,24 +335,10 @@ const ProfilePage: React.FC = () => {
                 </svg>
               </TabsTrigger>
               <TabsTrigger
-                value="link"
+                value="event"
                 className="w-[20%] animate-fade-up animate-delay-300"
               >
-                <svg
-                  className="w-5 h-5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 19 19"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M11.013 7.962a3.519 3.519 0 0 0-4.975 0l-3.554 3.554a3.518 3.518 0 0 0 4.975 4.975l.461-.46m-.461-4.515a3.518 3.518 0 0 0 4.975 0l3.553-3.554a3.518 3.518 0 0 0-4.974-4.975L10.3 3.7"
-                  />
-                </svg>
+                <MdOutlineEventAvailable className="w-6 h-6" />
               </TabsTrigger>
             </TabsList>
             <TabsContent value="profile" className="w-[100%] mb-5">
@@ -295,7 +347,7 @@ const ProfilePage: React.FC = () => {
                   Contact
                 </div>
                 <ul className="max-w-md divide-y divide-gray-200 ">
-                  <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
+                {data?.data?.phone ? <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
                     <div className="flex items-center space-x-4 rtl:space-x-reverse">
                       <div className="flex-shrink-0">
                         <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
@@ -320,12 +372,13 @@ const ProfilePage: React.FC = () => {
                           Phone
                         </p>
                         <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
-                          {data?.phone}
+                          {data?.data?.phone}
                         </p>
                       </div>
                     </div>
-                  </li>
-                  <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
+                  </li> : null}
+                  
+                  {data?.data?.email ? <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
                     <div className="flex items-center space-x-4 rtl:space-x-reverse">
                       <div className="flex-shrink-0">
                         <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
@@ -350,12 +403,13 @@ const ProfilePage: React.FC = () => {
                           Email
                         </p>
                         <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
-                          {data?.email}
+                          {data?.data?.email}
                         </p>
                       </div>
                     </div>
-                  </li>
-                  <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
+                  </li> : null}
+                  
+                  {data?.data?.website ?  <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
                     <div className="flex items-center space-x-4 rtl:space-x-reverse">
                       <div className="flex-shrink-0">
                         <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
@@ -380,120 +434,54 @@ const ProfilePage: React.FC = () => {
                           Web Site
                         </p>
                         <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
-                          https://chat.openai.com/
+                          {data?.data?.website}
                         </p>
                       </div>
                     </div>
-                  </li>
+                  </li> : null}
+                 
                 </ul>
               </div>
               <div className="bg-white p-5 rounded-2xl mt-3 animate-fade-right animate-delay-300">
                 <div className="font-sans leading-20 text-[#0d0d0d] text-[18px] font-[600] mb-2">
                   Work
                 </div>
-                <ul className="max-w-md divide-y divide-gray-200 ">
-                  <li className="pb-2 sm:pb-4 pt-2 animate-fade-up animate-delay-300">
-                    <div className="flex items-center space-x-4 rtl:space-x-reverse">
-                      <div className="flex-shrink-0">
-                        <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"
-                            />
-                          </svg>
-                        </Button>
+                <ul className="max-w-md divide-y divide-gray-200">
+                  {data?.data?.experiences.map((experience) => (
+                    <li
+                      key={experience.id}
+                      className="pb-2 sm:pb-4 pt-2 animate-fade-up animate-delay-300"
+                    >
+                      <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div className="flex-shrink-0">
+                          <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"
+                              />
+                            </svg>
+                          </Button>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-[16px] font-medium text-gray-500 truncate dark:text-white">
+                            {experience.title}
+                          </p>
+                          <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
+                            {experience.description?.en}
+                          </p>
+                        </div>
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[16px] font-medium  text-gray-500 truncate dark:text-white">
-                          Web develloper
-                        </p>
-                        <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
-                          Full stack MERN - Next JS
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="pb-2 sm:pb-4 pt-2 animate-fade-up animate-delay-300">
-                    <div className="flex items-center space-x-4 rtl:space-x-reverse">
-                      <div className="flex-shrink-0">
-                        <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                            />
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                            />
-                          </svg>
-                        </Button>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[16px] font-medium  text-gray-500 truncate dark:text-white">
-                          Location
-                        </p>
-                        <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
-                          545 8th St, San Franciscor CA 941 03,
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div className="bg-white p-5 rounded-2xl mt-3 animate-fade-right animate-delay-300">
-                <div className="font-sans leading-20 text-[#0d0d0d] text-[18px] font-[600] mb-2">
-                  Education
-                </div>
-                <ul className="max-w-md divide-y divide-gray-200 ">
-                  <li className="pb-2 sm:pb-4 pt-2 animate-fade-up animate-delay-300">
-                    <div className="flex items-center space-x-4 rtl:space-x-reverse">
-                      <div className="flex-shrink-0">
-                        <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z"
-                            />
-                          </svg>
-                        </Button>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="font-medium  text-gray-500 truncate dark:text-white text-[16px]">
-                          HCI Bachelor Degree
-                        </p>
-                        <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
-                          York University
-                        </p>
-                      </div>
-                    </div>
-                  </li>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </TabsContent>
@@ -503,37 +491,28 @@ const ProfilePage: React.FC = () => {
                   About me
                 </div>
                 <div className="font-sans text-[#0d0d0d] text-[17px] font-[400] w-[90%] mt-5">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industrys
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.
+                  {data?.data?.fullPresentation?.en}
                 </div>
               </div>
             </TabsContent>
-            <TabsContent value="link" className="w-[100%] shadow mb-10">
+            <TabsContent value="event" className="w-[100%] shadow mb-10">
               <div className="bg-white p-5 rounded-2xl animate-fade-right animate-delay-300">
-                  <div className="w-full m-auto py-16 min-h-screen flex items-center justify-center">
-                    <div className="bg-white shadow overflow-hidden sm:rounded-lg pb-8">
-                      <div className="border-t border-gray-200 text-center pt-8">
-                        <h1 className="text-9xl font-bold text-purple-400">
-                          404
-                        </h1>
-                        <h1 className="text-6xl font-medium py-8">
-                          oops! Page not found
-                        </h1>
-                        <p className="text-2xl pb-8 px-12 font-medium">
-                          Oops! The page you are looking for does not exist. It
-                          might have been moved or deleted.
-                        </p>
-                      </div>
+                <div className="w-full m-auto py-16 min-h-screen flex items-center justify-center">
+                  <div className="bg-white shadow overflow-hidden sm:rounded-lg pb-8">
+                    <div className="border-t border-gray-200 text-center pt-8">
+                      <h1 className="text-9xl font-bold text-purple-400">
+                        404
+                      </h1>
+                      <h1 className="text-6xl font-medium py-8">
+                        oops! Page not found
+                      </h1>
+                      <p className="text-2xl pb-8 px-12 font-medium">
+                        Oops! The page you are looking for does not exist. It
+                        might have been moved or deleted.
+                      </p>
                     </div>
                   </div>
+                </div>
               </div>
             </TabsContent>
           </Tabs>
@@ -549,7 +528,7 @@ const ProfilePage: React.FC = () => {
             <RWebShare
               data={{
                 text: "Check out this link: \n",
-                url: `https://lastartupstation.vercel.app/profile-v2/${data?.firstName}-${data?.lastName}`,
+                url: `https://lastartupstation.vercel.app/profile-v2/${data?.data?.firstName}-${data?.data?.lastName}`,
                 title: "Qr Code ",
               }}
               onClick={() => console.log("shared successfully!")}
@@ -577,5 +556,39 @@ const ProfilePage: React.FC = () => {
     </>
   );
 };
+
+function QrCodeGenerator({ className, dataUser }: any) {
+  const [disabled, setDisabled] = useState(false);
+  const UrlWebSiteForUser = `https://lastartupstation.vercel.app/pop-card-users/${dataUser[1]}`;
+  const QrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${UrlWebSiteForUser}`;
+  const [isHidden, setIsHidden] = useState(true);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setIsHidden(false);
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, []); // Run the effect only once when the component mounts
+
+  return (
+    <div className="flex justify-center items-center flex-col">
+      <div className="flex justify-center items-center">
+        {!isHidden && (
+          <img
+            src={QrCodeUrl}
+            className={`h-[200px] max-w-sm rounded-lg shadow-none hover:shadow-lg hover:shadow-black/30`}
+            alt=""
+          />
+        )}
+        {isHidden && (
+          <div className="bg-white flex space-x-12 p-12 justify-center items-center w-full ">
+            <div className="h-20 w-20 bg-[#ffd5a1] p-2 animate-spin rounded-md"></div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default ProfilePage;

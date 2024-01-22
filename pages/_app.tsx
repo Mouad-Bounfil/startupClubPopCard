@@ -6,8 +6,14 @@ import Head from "next/head";
 import axios from "axios";
 import { Toaster } from "@/components/ui/toaster"
 
+import jwt from "jsonwebtoken"; 
 
-axios.defaults.baseURL = "https://serverexpress-hosting.vercel.app/";
+
+
+axios.defaults.baseURL = "https://api-dev.startupsquare.co/api/v3/";
+const apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoicG9wY2FyZC1zdGFydHVwc3F1YXJlIiwiaWF0IjoxNzA1ODc3NjQ2fQ.gZh7QeQYyNDjALPNTUQJTmt7LNUPnds_5YL5bIVB9JU";
+
+axios.defaults.headers.common["x-api-key"] = apiKey;
 
 export default function App({ Component, pageProps }: AppProps) {
   <Head>

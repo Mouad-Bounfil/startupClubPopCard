@@ -35,43 +35,46 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import useSWR, { mutate } from "swr";
 import { useToast } from "@/components/ui/use-toast";
+import { FaUserCircle } from "react-icons/fa";
+import { LuUserCircle2 } from "react-icons/lu";
 
 export function TableDemo({ data }) {
   const [open, setOpen] = useState(false);
   const generateQrCode = (firstName, lastName) => {
     console.log(firstName, lastName);
   };
+  console.log("data : ", data);
   return (
     <>
-      <Table className="w-[70%] m-auto shadow-2xl text-[15px] mt-10">
+      <Table className="w-[80%] m-auto shadow-2xl text-[15px] mt-10">
         <TableCaption>A list of your recent invoices.</TableCaption>
-        <TableHeader>
+        <TableHeader className="bg-gray-100">
           <TableRow>
-            <TableHead className="w-[100px]">Img </TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>First Name</TableHead>
-            <TableHead>Last Name</TableHead>
-            <TableHead>Age</TableHead>
-            <TableHead className="text-center">Qr Code Generator</TableHead>
+            <TableHead className="w-[100px] text-gray-700">Img </TableHead>
+            <TableHead className=" text-gray-700">Email</TableHead>
+            <TableHead className=" text-gray-700">Full Name</TableHead>
+            <TableHead className="text-center  text-gray-700">Qr Code Generator</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data?.map((invoice) => (
-            <TableRow key={invoice.id} className="shadow-md text-[16px]">
+          {data?.data?.docs?.map((invoice) => (
+            <TableRow key={invoice._id} className="shadow-md text-[16px] bg-white">
               <TableCell>
-                <div className="relative ">
-                  <img
-                    className="w-10 h-10 rounded-full bg-[#fff3e5] shadow-2xl"
-                    src={invoice.image}
-                    alt=""
-                  />
-                  <span className="top-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                <div className="relative">
+                  {invoice?.profilePic ? (
+                    <img
+                      className="w-10 h-10 rounded-full bg-[#fff3e5] shadow-2xl"
+                      src={invoice.profilePic}
+                      alt=""
+                    />
+                  ) : (
+                    <LuUserCircle2 className="w-10 h-10 text-gray-700 shadow-2xl" />
+                  )}
+                  <span className="top-0 left-7 absolute w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
                 </div>
               </TableCell>
-              <TableCell className="font-medium">{invoice.email}</TableCell>
-              <TableCell>{invoice.firstName}</TableCell>
-              <TableCell>{invoice.lastName}</TableCell>
-              <TableCell>{invoice.age}</TableCell>
+              <TableCell className="font-medium">{invoice?.email}</TableCell>
+              <TableCell>{invoice?.fullName}</TableCell>
               <TableCell className="flex justify-center">
                 <Drawer>
                   <DrawerTrigger>
@@ -101,8 +104,7 @@ export function TableDemo({ data }) {
                     <QrCodeGenerator
                       className="px-4"
                       dataUser={[
-                        invoice.firstName,
-                        invoice.lastName,
+                        invoice.fullName,
                         invoice._id,
                       ]}
                     />
@@ -119,7 +121,7 @@ export function TableDemo({ data }) {
 
 function QrCodeGenerator({ className, dataUser }: any) {
   const [disabled, setDisabled] = useState(false);
-  const UrlWebSiteForUser = `https://lastartupstation.vercel.app/profile-v2/${dataUser[0]}-${dataUser[1]}`;
+  const UrlWebSiteForUser = `https://lastartupstation.vercel.app/pop-card-users/${dataUser[1]}`;
   const QrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${UrlWebSiteForUser}`;
   const [isHidden, setIsHidden] = useState(true);
   const { toast } = useToast();
@@ -145,7 +147,7 @@ function QrCodeGenerator({ className, dataUser }: any) {
       console.log("User updated successfully!");
     } catch (error) {
       setDisabled(false);
-      
+
       if (error.response && error.response.status === 404) {
         toast({
           description: "User not found. Please check the user ID.",

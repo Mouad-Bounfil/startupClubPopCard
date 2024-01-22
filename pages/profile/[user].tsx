@@ -8,6 +8,7 @@ const ProfilePage: React.FC = () => {
   const router = useRouter();
   const userName = router.query.user?.toString() || "";
   const { data, isLoading, error } = useSWR(`/user/profile/${userName}`);
+  
   if (error) {
     if (error?.response?.status === 300) {
       return (

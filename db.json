@@ -1,41 +1,41 @@
 {
   "id": 11,
-  "firstName": "Zahra",
-  "lastName": "Laeliani",
+  "firstName": "Hamza",
+  "lastName": "ECHARRAFI ",
   "age": 22,
-  "position": "Full Stack Web Developer",
-  "Company": "LaStartupStation",
-  "description": "I code dreams into reality with a touch of flair – Wordpress Enthusiast 💻✨ | JavaScript Maestro 🚀",
-  "gender": "female",
-  "email": "zahra.laeliani.1@gmail.com",
-  "phone": "656921258",
-  "username": "Zahra",
-  "password": "Zahra",
+  "position": "CEO chez ",
+  "Company": "Eagle Drone Technology",
+  "description": "|EXPERTISE IN GEOMATICS & DRONE | BUSINESS DEVELOPPEMENT |📊",
+  "gender": "male",
+  "email": "echarrafi01hamza@gmail.com",
+  "phone": "639922100",
+  "username": "charrafi01hamza",
+  "password": "charrafi01hamza",
   "birthDate": "15-06-2001",
-  "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce-arkx.appspot.com/o/MyLogo6.PNG?alt=media&token=a68deec1-dbd1-44cc-9e41-b1e67618252f",
-  "university": "Offpt",
+  "image": "https://echarrafi-hamza.surge.sh/pic.png",
+  "university": "University",
   "socialMedia": {
     "whatsapp": {
-      "name": "mouad.bounfil",
+      "name": "echarrafi.hamza",
       "link":"http://www.facebook.com"
     },
     "github": null,
     "linkedin": {
-      "name": "zahra-laeliani",
-      "link":"https://www.linkedin.com/in/zahra-laeliani-1358762a3?trk=contact-info"
+      "name": "ECHARRAFI Hamza",
+      "link":"https://www.linkedin.com/in/echarrafi-hamza/"
     },
     "email": {
-      "name": "@Zahra",
+      "name": "@ECHARRAFI ",
       "link":"http://www.facebook.com"
     },
     "facebook": {
-      "name": "zahra_laeliani",
-      "link":"https://www.facebook.com/profile.php?id=100048748240062&mibextid=ZbWKwL"
+      "name": "Hamza ECHARRAFI ",
+      "link":"https://www.facebook.com/ECHARRAFI01HAMZA?mibextid=ZbWKwL"
     },
     "X": null,
     "instagram": {
-      "name": "z.a.h.r.a",
-      "link":"https://www.instagram.com/zahra_zahra601?igsh=ZmloaWZmMDZia3No"
+      "name": "H.a.m.z.a",
+      "link":"https://www.instagram.com/echarrafihamza/"
     }
     
   }

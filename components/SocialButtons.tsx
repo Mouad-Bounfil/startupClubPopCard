@@ -1,4 +1,4 @@
-import { FaWhatsapp, FaGithub, FaFacebookF } from "react-icons/fa";
+import { FaWhatsapp, FaGithub, FaFacebookF , FaYoutube } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
 
 import { FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
@@ -6,20 +6,17 @@ import { Button } from "./ui/button";
 
 import React, { useState } from "react";
 import { TfiMoreAlt } from "react-icons/tfi";
+import { MdOutlineExpandMore } from "react-icons/md";
 
 interface SocialMediaData {
-  [key: string]: {
-    name: string;
-    link: string;
-  } | null;
+  [key: string]: string | null;
 }
-
-const SocialButtons = ({ data, sendMessageWa, sendEmail }) => {
+const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
   const getSocialIcon = (key) => {
     switch (key) {
       case "whatsapp":
         return <FaWhatsapp className="h-5 w-5" />;
-      case "linkedin":
+      case "linkedIn":
         return (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -38,8 +35,11 @@ const SocialButtons = ({ data, sendMessageWa, sendEmail }) => {
         return <FaGithub className="h-5 w-5" />;
       case "facebook":
         return <FaFacebookF className="h-5 w-5" />;
-      case "X":
+      case "twitter":
         return <RiTwitterXFill className="h-5 w-5" />;
+      case "youtube":
+        return <FaYoutube  className="h-5 w-5" />;
+        
       // Add cases for other social media keys as needed
       default:
         return null; // Return null for unknown keys
@@ -54,14 +54,14 @@ const SocialButtons = ({ data, sendMessageWa, sendEmail }) => {
     .map(([key, value]) => {
       const defaultText = "Default Text"; // You can customize this default text
       const defaultLink = "#"; // You can customize this default link or handle null
-      if (value == null) {
+      if (value == "" || key === "id") {
         return null;
       }
       return {
         key,
         icon: getSocialIcon(key), // Implement this function to get the corresponding icon
-        text: value?.name || defaultText,
-        link: value?.link || defaultLink,
+        text: key || defaultText,
+        link: value || defaultLink,
         onClick:
           key === "whatsapp"
             ? sendMessageWa
@@ -71,7 +71,22 @@ const SocialButtons = ({ data, sendMessageWa, sendEmail }) => {
       };
     })
     .filter((button) => button !== null);
+    
+    if (phone != ""){
+      socialButtons.push({
+        key: "whatsapp",
+        icon: getSocialIcon("whatsapp"),
+        text: "WhatsApp",
+        link: "", 
+        onClick: sendMessageWa,
+      });
+    }
+    
 
+    socialButtons.sort((a, b) => {
+      const customOrder = ["whatsapp", "linkedIn", "instagram", "twitter", "facebook", "github", "youtube"];
+      return customOrder.indexOf(a.key) - customOrder.indexOf(b.key);
+    });
   const [showAllButtons, setShowAllButtons] = useState(false);
 
   const limitedButtons = socialButtons.slice(0, 4);
@@ -80,20 +95,39 @@ const SocialButtons = ({ data, sendMessageWa, sendEmail }) => {
 
   return (
     <div className="flex p-2 justify-center items-center flex-wrap gap-4 mt-6 mb-5">
-      {buttonsToShow.map(({ key, icon, text, link, onClick }) => (
-        
-        
-          <Button
-          key={key}
-            onClick={onClick}
-            className="animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-2 bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
+      {buttonsToShow.map(({ key, icon, text, link, onClick }) =>
+        key === "whatsapp" ? (
+          <a
+            key={key}
+            className="text-[16px] no-underline"
           >
-            {icon}
-            <a href={link} target="_blank" rel="noopener noreferrer" className="text-[16px]">{text}</a>
-          </Button>
-        
-      ))}
-      {!showAllButtons && socialButtons.length > 2 && (
+            <Button
+              onClick={onClick}
+              className="animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-2 bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
+            >
+              {icon}
+              <span className="text-[16px]">{text}</span>
+            </Button>
+          </a>
+        ) : (
+          <a
+            key={key}
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[16px] no-underline"
+          >
+            <Button
+              onClick={onClick}
+              className="animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-2 bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
+            >
+              {icon}
+              <span className="text-[16px]">{text}</span>
+            </Button>
+          </a>
+        )
+      )}
+      {!showAllButtons && socialButtons.length > 4 && (
         <Button
           onClick={() => setShowAllButtons(true)}
           className="rounded-full animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-2 bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] "
