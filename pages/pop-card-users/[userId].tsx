@@ -32,7 +32,6 @@ const ProfilePage: React.FC = () => {
   const { data, isValidating, error, isLoading } = useSWR(
     `pop-card-users/${userId}`
   );
-  
 
   const [contactInfo, setContactInfo] = useState({
     fn: " ",
@@ -134,7 +133,7 @@ const ProfilePage: React.FC = () => {
     const telLink = `tel:${phoneFormat}`;
 
     window.open(telLink, "_blank");
-};
+  };
 
   const sendEmail = () => {
     const toEmail = `${data?.data?.email}`;
@@ -239,7 +238,8 @@ const ProfilePage: React.FC = () => {
               <DrawerHeader className="flex justify-center items-center flex-col">
                 <DrawerTitle>Qr Code Generator</DrawerTitle>
                 <DrawerDescription>
-                QR Code generation in progress. This is the QR Code for that website.
+                  QR Code generation in progress. This is the QR Code for that
+                  website.
                 </DrawerDescription>
               </DrawerHeader>
               <QrCodeGenerator
@@ -269,8 +269,8 @@ const ProfilePage: React.FC = () => {
               {data?.data?.firstName} {data?.data?.lastName}
             </h3>
             <div className="font-sans text-[#595b5a] text-[17px] font-medium animate-fade-up animate-delay-300">
-              {data?.data?.jobTitle} at{" "}
-              <span className="text-[#0d0d0d]">LaStartupStation</span>
+              {data?.data?.jobTitle} {data?.data?.jobTitle && " - "}  {" "}
+              <span className="text-[#0d0d0d]">LaStartupClub</span>
             </div>
             <div className="text-center font-sans text-[#595b5a] text-[17px] font-[400] w-[85%] mt-5 animate-fade-up animate-delay-300">
               {data?.data?.shortDescription.en ? (
@@ -349,112 +349,42 @@ const ProfilePage: React.FC = () => {
                   Contact
                 </div>
                 <ul className="max-w-md divide-y divide-gray-200 ">
-                {data?.data?.phone ? <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
-                    <div className="flex items-center space-x-4 rtl:space-x-reverse">
-                      <div className="flex-shrink-0">
-                        <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
-                            />
-                          </svg>
-                        </Button>
+                  {data?.data?.phone ? (
+                    <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
+                      <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div className="flex-shrink-0">
+                          <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                              />
+                            </svg>
+                          </Button>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-[16px] font-medium  text-gray-500 truncate dark:text-white">
+                            Phone
+                          </p>
+                          <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
+                            {data?.data?.phone}
+                          </p>
+                        </div>
+                        <LuSendHorizonal className="w-5 h-5" />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[16px] font-medium  text-gray-500 truncate dark:text-white">
-                          Phone
-                        </p>
-                        <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
-                          {data?.data?.phone}
-                        </p>
-                      </div>
-                      <LuSendHorizonal className="w-5 h-5"/>
-                    </div>
-                  </li> : null}
-                  
-                  {data?.data?.email ? <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
-                    <div className="flex items-center space-x-4 rtl:space-x-reverse">
-                      <div className="flex-shrink-0">
-                        <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
-                            />
-                          </svg>
-                        </Button>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[16px] font-medium  text-gray-500 truncate dark:text-white">
-                          Email
-                        </p>
-                        <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
-                          {data?.data?.email}
-                        </p>
-                      </div>
-                    </div>
-                  </li> : null}
-                  
-                  {data?.data?.website ?  <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
-                    <div className="flex items-center space-x-4 rtl:space-x-reverse">
-                      <div className="flex-shrink-0">
-                        <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25"
-                            />
-                          </svg>
-                        </Button>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[16px] font-medium  text-gray-500 truncate dark:text-white">
-                          Web Site
-                        </p>
-                        <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
-                          {data?.data?.website}
-                        </p>
-                      </div>
-                    </div>
-                  </li> : null}
-                 
-                </ul>
-              </div>
-              <div className="bg-white p-5 rounded-2xl mt-3 animate-fade-right animate-delay-300">
-                <div className="font-sans leading-20 text-[#0d0d0d] text-[18px] font-[600] mb-2">
-                  Work
-                </div>
-                <ul className="max-w-md divide-y divide-gray-200">
-                  {data?.data?.experiences && data?.data?.experiences.map((experience) => (
-                    <li
-                      key={experience.id}
-                      className="pb-2 sm:pb-4 pt-2 animate-fade-up animate-delay-300"
-                    >
+                    </li>
+                  ) : null}
+
+                  {data?.data?.email ? (
+                    <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
                       <div className="flex items-center space-x-4 rtl:space-x-reverse">
                         <div className="flex-shrink-0">
                           <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
@@ -469,24 +399,101 @@ const ProfilePage: React.FC = () => {
                               <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"
+                                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
                               />
                             </svg>
                           </Button>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-[16px] font-medium text-gray-500 truncate dark:text-white">
-                            {experience.title}
+                          <p className="text-[16px] font-medium  text-gray-500 truncate dark:text-white">
+                            Email
                           </p>
                           <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
-                            {experience.description?.en}
+                            {data?.data?.email}
                           </p>
                         </div>
                       </div>
                     </li>
-                  ))}
+                  ) : null}
+
+                  {data?.data?.website ? (
+                    <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
+                      <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div className="flex-shrink-0">
+                          <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25"
+                              />
+                            </svg>
+                          </Button>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-[16px] font-medium  text-gray-500 truncate dark:text-white">
+                            Web Site
+                          </p>
+                          <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
+                            {data?.data?.website}
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  ) : null}
                 </ul>
               </div>
+              {data?.data?.experiences && (
+                <div className="bg-white p-5 rounded-2xl mt-3 animate-fade-right animate-delay-300">
+                  <div className="font-sans leading-20 text-[#0d0d0d] text-[18px] font-[600] mb-2">
+                    Work
+                  </div>
+                  <ul className="max-w-md divide-y divide-gray-200">
+                    {data?.data?.experiences.map((experience) => (
+                      <li
+                        key={experience.id}
+                        className="pb-2 sm:pb-4 pt-2 animate-fade-up animate-delay-300"
+                      >
+                        <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                          <div className="flex-shrink-0">
+                            <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-6 h-6"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"
+                                />
+                              </svg>
+                            </Button>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-[16px] font-medium text-gray-500 truncate dark:text-white">
+                              {experience.title}
+                            </p>
+                            <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
+                              {experience.description?.en}
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </TabsContent>
             <TabsContent value="about" className="w-[100%] shadow mb-10">
               <div className="bg-white p-5 rounded-2xl animate-fade-right animate-delay-300">
