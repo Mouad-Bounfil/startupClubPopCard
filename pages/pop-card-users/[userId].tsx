@@ -25,7 +25,7 @@ import { FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 import SocialButtons from "@/components/SocialButtons";
 import { MdOutlineEventAvailable } from "react-icons/md";
 import { BsQrCode } from "react-icons/bs";
-
+import { RiExternalLinkLine } from "react-icons/ri";
 const ProfilePage: React.FC = () => {
   const router = useRouter();
   const userId = router.query.userId?.toString() || "";
@@ -351,7 +351,7 @@ const ProfilePage: React.FC = () => {
                 <ul className="max-w-md divide-y divide-gray-200 ">
                   {data?.data?.phone ? (
                     <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
-                      <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                      <div className="flex items-center space-x-4 rtl:space-x-reverse" onClick={callPhoneNumber}>
                         <div className="flex-shrink-0">
                           <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
                             <svg
@@ -374,11 +374,11 @@ const ProfilePage: React.FC = () => {
                           <p className="text-[16px] font-medium  text-gray-500 truncate dark:text-white">
                             Phone
                           </p>
-                          <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
-                            {data?.data?.phone}
+                          <p className="flex text-[16px] text-gray-900 truncate dark:text-gray-400">
+                            <div className="mr-2">{data?.data?.phone}</div> 
                           </p>
                         </div>
-                        <LuSendHorizonal className="w-5 h-5" />
+                        
                       </div>
                     </li>
                   ) : null}
