@@ -569,7 +569,7 @@ const ProfilePage: React.FC = () => {
             <TabsContent value="event" className="w-[100%]">
               <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5 mb-5">
                 {/* Card 1 */}
-                <div className="rounded overflow-hidden shadow-lg bg-white">
+                <div className="rounded-lg overflow-hidden shadow-lg bg-white">
                   <a href="#"></a>
                   <div className="relative">
                     <a href="#">
@@ -611,7 +611,7 @@ const ProfilePage: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                <div className="rounded overflow-hidden shadow-lg bg-white">
+                <div className="rounded-lg overflow-hidden shadow-lg bg-white">
                   <a href="#"></a>
                   <div className="relative">
                     <a href="#">
