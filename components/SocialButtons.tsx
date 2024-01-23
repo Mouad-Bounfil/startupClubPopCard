@@ -28,17 +28,17 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
           </svg>
         );
       case "instagram":
-        return <FaInstagram className="h-5 w-5" />;
+        return <FaInstagram className="h-4 w-4" />;
       case "email":
-        return <FaEnvelope className="h-5 w-5" />;
+        return <FaEnvelope className="h-4 w-4" />;
       case "github":
-        return <FaGithub className="h-5 w-5" />;
+        return <FaGithub className="h-4 w-4" />;
       case "facebook":
-        return <FaFacebookF className="h-5 w-5" />;
+        return <FaFacebookF className="h-4 w-4" />;
       case "twitter":
-        return <RiTwitterXFill className="h-5 w-5" />;
+        return <RiTwitterXFill className="h-4 w-4" />;
       case "youtube":
-        return <FaYoutube  className="h-5 w-5" />;
+        return <FaYoutube  className="h-4 w-4" />;
         
       // Add cases for other social media keys as needed
       default:
@@ -94,7 +94,7 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
   const buttonsToShow = showAllButtons ? socialButtons : limitedButtons;
 
   return (
-    <div className="flex p-2 justify-center items-center flex-wrap gap-4 mt-6 mb-5">
+    <div className="flex p-2 justify-center items-center flex-wrap gap-2 mt-6 mb-5">
       {buttonsToShow.map(({ key, icon, text, link, onClick }) =>
         key === "whatsapp" ? (
           <a
@@ -103,7 +103,7 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
           >
             <Button
               onClick={onClick}
-              className="animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-2 bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
+              className="animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-2 bg-white text-[#1d1d1d] border-[1px] border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
             >
               {icon}
               <span className="text-[16px]">{text}</span>
@@ -119,7 +119,7 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
           >
             <Button
               onClick={onClick}
-              className="animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-2 bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
+              className="animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-2 bg-white text-[#1d1d1d] border-[1px] border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
             >
               {icon}
               <span className="text-[16px]">{text}</span>
