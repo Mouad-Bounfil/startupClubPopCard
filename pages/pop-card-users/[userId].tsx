@@ -9,6 +9,16 @@ import { RWebShare } from "react-web-share";
 import { FaWhatsapp, FaGithub, FaFacebookF } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
 import { MdExpandMore } from "react-icons/md";
+
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import {
   Drawer,
   DrawerClose,
@@ -590,7 +600,7 @@ const ProfilePage: React.FC = () => {
                       </div>
                     </a>
                     <a>
-                      <div className="text-sm absolute top-0 right-0 bg-white px-4 text-black rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
+                      <div className="text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
                         <span className="font-bold text-[#111013]">27</span>
                         <small className="text-[#111013]">March</small>
                       </div>
@@ -612,7 +622,7 @@ const ProfilePage: React.FC = () => {
                           View Details
                         </Button>
                       </DrawerTrigger>
-                      <DrawerContent className="h-[100%]">
+                      <DrawerContent className="h-[70%]">
                         <DrawerHeader className="flex justify-center items-center flex-col">
                           <DrawerTitle>Qr Code Generator</DrawerTitle>
                           <DrawerDescription>
@@ -620,10 +630,7 @@ const ProfilePage: React.FC = () => {
                             for that website.
                           </DrawerDescription>
                         </DrawerHeader>
-                        <EventGenerator
-                          className="px-4"
-                          dataUser={[data?.data?.fullName, data?.data?._id]}
-                        />
+                        <EventGenerator />
                       </DrawerContent>
                     </Drawer>
                   </div>
@@ -649,7 +656,7 @@ const ProfilePage: React.FC = () => {
                       </div>
                     </a>
                     <a href="!#">
-                      <div className="text-sm absolute top-0 right-0 bg-white px-4 text-black rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
+                      <div className="text-sm absolute top-0 right-0 bg-[#fe9917] px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
                         <span className="font-bold text-[#111013]">27</span>
                         <small className="text-[#111013]">March</small>
                       </div>
@@ -671,7 +678,7 @@ const ProfilePage: React.FC = () => {
                           View Details
                         </Button>
                       </DrawerTrigger>
-                      <DrawerContent className="h-[100%]">
+                      <DrawerContent className="h-[70%]">
                         <DrawerHeader className="flex justify-center items-center flex-col">
                           <DrawerTitle>Qr Code Generator</DrawerTitle>
                           <DrawerDescription>
@@ -679,10 +686,7 @@ const ProfilePage: React.FC = () => {
                             for that website.
                           </DrawerDescription>
                         </DrawerHeader>
-                        <EventGenerator
-                          className="px-4"
-                          dataUser={[data?.data?.fullName, data?.data?._id]}
-                        />
+                        <EventGenerator />
                       </DrawerContent>
                     </Drawer>
                   </div>
@@ -788,8 +792,47 @@ function QrCodeGenerator({ className, dataUser }: any) {
     </div>
   );
 }
-function EventGenerator({ className, dataUser }: any) {
-  return <div>mouad</div>;
+
+function EventGenerator() {
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
+
+  return (
+    <div className="w-full flex flex-col justify-center items-center">
+      <Carousel setApi={setApi} className="w-[80%] max-w-xs">
+        <CarouselContent>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <CarouselItem key={index}>
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                  <span className="text-4xl font-semibold">{index + 1}</span>
+                </CardContent>
+              </Card>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+      <div>
+        
+      </div>
+    </div>
+  );
 }
 
 export default ProfilePage;
