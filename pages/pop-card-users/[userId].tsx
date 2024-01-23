@@ -642,11 +642,18 @@ function QrCodeGenerator({ className, dataUser }: any) {
     return () => clearTimeout(timeoutId);
   }, []); // Run the effect only once when the component mounts
 
-  const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = QrCodeUrl;
-    link.download = "qrcode.png";
-    link.click();
+  const handleDownload = async () => {
+    try {
+      const response = await fetch(QrCodeUrl);
+      const blob = await response.blob();
+  
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "qrcode.png";
+      link.click();
+    } catch (error) {
+      console.error("Error downloading QR code:", error);
+    }
   };
 
   return (
@@ -661,7 +668,7 @@ function QrCodeGenerator({ className, dataUser }: any) {
             />
             <Button
               onClick={handleDownload}
-              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+              className="mt-4 w-full bg-[#111013] px-4 py-2 rounded"
             >
               Download QR Code
             </Button>
