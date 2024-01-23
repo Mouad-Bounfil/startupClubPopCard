@@ -566,24 +566,95 @@ const ProfilePage: React.FC = () => {
                 </div>
               </div>
             </TabsContent>
-            <TabsContent value="event" className="w-[100%] shadow mb-10">
-              <div className="bg-white p-5 rounded-2xl animate-fade-right animate-delay-300">
-                <div className="w-full m-auto py-16 min-h-screen flex items-center justify-center">
-                  <div className="bg-white shadow overflow-hidden sm:rounded-lg pb-8">
-                    <div className="border-t border-gray-200 text-center pt-8">
-                      <h1 className="text-9xl font-bold text-purple-400">
-                        404
-                      </h1>
-                      <h1 className="text-6xl font-medium py-8">
-                        oops! Page not found
-                      </h1>
-                      <p className="text-2xl pb-8 px-12 font-medium">
-                        Oops! The page you are looking for does not exist. It
-                        might have been moved or deleted.
-                      </p>
-                    </div>
+            <TabsContent value="event" className="w-[100%]">
+              <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5 mb-5">
+                {/* Card 1 */}
+                <div className="rounded overflow-hidden shadow-lg bg-white">
+                  <a href="#"></a>
+                  <div className="relative">
+                    <a href="#">
+                      <img
+                        className="w-full"
+                        src="https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
+                        alt="Sunset in the mountains"
+                      />
+                      <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
+                    </a>
+                    <a href="#!">
+                      <div className="font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
+                        <img
+                          className="w-[100px] "
+                          src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
+                          alt=""
+                        />
+                      </div>
+                    </a>
+                    <a href="!#">
+                      <div className="text-sm absolute top-0 right-0 bg-[#fe9917] px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
+                        <span className="font-bold text-[#111013]">27</span>
+                        <small className="text-[#111013]">March</small>
+                      </div>
+                    </a>
+                  </div>
+                  <div className="px-6 py-4 ">
+                    <a
+                      href="#"
+                      className="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out"
+                    >
+                      Best View in Newyork City
+                    </a>
+                    <p className="text-gray-500 text-[15px] line-clamp-3 ">
+                      The city that never sleeps The city that never sleepsThe
+                      city that never sleeps The city that never sleeps The city
+                      that never sleeps The city that never sleepsThe city that
+                      never sleeps The city that never sleeps
+                    </p>
                   </div>
                 </div>
+                <div className="rounded overflow-hidden shadow-lg bg-white">
+                  <a href="#"></a>
+                  <div className="relative">
+                    <a href="#">
+                      <img
+                        className="w-full"
+                        src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/1949084/183054_645045.jpeg"
+                        alt="Sunset in the mountains"
+                      />
+                      <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
+                    </a>
+                    <a href="#!">
+                      <div className="font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
+                        <img
+                          className="w-[100px] "
+                          src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
+                          alt=""
+                        />
+                      </div>
+                    </a>
+                    <a href="!#">
+                      <div className="text-sm absolute top-0 right-0 bg-[#fe9917] px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
+                        <span className="font-bold text-[#111013]">27</span>
+                        <small className="text-[#111013]">March</small>
+                      </div>
+                    </a>
+                  </div>
+                  <div className="px-6 py-4 ">
+                    <a
+                      href="#"
+                      className="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out"
+                    >
+                      Best View in Newyork City
+                    </a>
+                    <p className="text-gray-500 text-[15px] line-clamp-3 ">
+                      The city that never sleeps The city that never sleepsThe
+                      city that never sleeps The city that never sleeps The city
+                      that never sleeps The city that never sleepsThe city that
+                      never sleeps The city that never sleeps
+                    </p>
+                  </div>
+                </div>
+
+                {/* Repeat the structure for Card 2 and Card 3 */}
               </div>
             </TabsContent>
           </Tabs>
@@ -646,7 +717,7 @@ function QrCodeGenerator({ className, dataUser }: any) {
     try {
       const response = await fetch(QrCodeUrl);
       const blob = await response.blob();
-  
+
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
       link.download = "qrcode.png";
