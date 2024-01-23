@@ -570,9 +570,9 @@ const ProfilePage: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5 mb-5">
                 {/* Card 1 */}
                 <div className="rounded-lg overflow-hidden shadow-lg bg-white">
-                  <a href="#"></a>
+                  <a></a>
                   <div className="relative">
-                    <a href="#">
+                    <a>
                       <img
                         className="w-full"
                         src="https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
@@ -580,7 +580,7 @@ const ProfilePage: React.FC = () => {
                       />
                       <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
                     </a>
-                    <a href="#!">
+                    <a>
                       <div className="font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
                         <img
                           className="w-[100px] "
@@ -589,7 +589,7 @@ const ProfilePage: React.FC = () => {
                         />
                       </div>
                     </a>
-                    <a href="!#">
+                    <a>
                       <div className="text-sm absolute top-0 right-0 bg-[#fe9917] px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
                         <span className="font-bold text-[#111013]">27</span>
                         <small className="text-[#111013]">March</small>
@@ -597,10 +597,7 @@ const ProfilePage: React.FC = () => {
                     </a>
                   </div>
                   <div className="px-6 py-4 ">
-                    <a
-                      href="#"
-                      className="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out"
-                    >
+                    <a className="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
                       Best View in Newyork City
                     </a>
                     <p className="text-gray-500 text-[15px] line-clamp-3 ">
@@ -609,15 +606,30 @@ const ProfilePage: React.FC = () => {
                       that never sleeps The city that never sleepsThe city that
                       never sleeps The city that never sleeps
                     </p>
-                    <Button
-              className="text-black animate-fade-right animate-once animate-delay-300 active:bg-gray-500 w-full mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]"
-            >
-              View Details
-            </Button>
+                    <Drawer>
+                      <DrawerTrigger>
+                        <Button className="text-black animate-fade-right animate-once animate-delay-300 active:bg-gray-500 w-full mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
+                          View Details
+                        </Button>
+                      </DrawerTrigger>
+                      <DrawerContent className="h-[50%]">
+                        <DrawerHeader className="flex justify-center items-center flex-col">
+                          <DrawerTitle>Qr Code Generator</DrawerTitle>
+                          <DrawerDescription>
+                            QR Code generation in progress. This is the QR Code
+                            for that website.
+                          </DrawerDescription>
+                        </DrawerHeader>
+                        <EventGenerator
+                          className="px-4"
+                          dataUser={[data?.data?.fullName, data?.data?._id]}
+                        />
+                      </DrawerContent>
+                    </Drawer>
                   </div>
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-lg bg-white">
-                  <a href="#"></a>
+                  <a></a>
                   <div className="relative">
                     <a href="#">
                       <img
@@ -644,10 +656,7 @@ const ProfilePage: React.FC = () => {
                     </a>
                   </div>
                   <div className="px-6 py-4 ">
-                    <a
-                      href="#"
-                      className="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out"
-                    >
+                    <a className="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
                       Best View in Newyork City
                     </a>
                     <p className="text-gray-500 text-[15px] line-clamp-3 ">
@@ -656,12 +665,26 @@ const ProfilePage: React.FC = () => {
                       that never sleeps The city that never sleepsThe city that
                       never sleeps The city that never sleeps
                     </p>
-                    <Button
-              className="text-black animate-fade-right animate-once animate-delay-300 active:bg-gray-500 w-full mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]"
-            >
-              View Details
-            </Button>
-
+                    <Drawer>
+                      <DrawerTrigger>
+                        <Button className="text-black animate-fade-right animate-once animate-delay-300 active:bg-gray-500 w-full mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
+                          View Details
+                        </Button>
+                      </DrawerTrigger>
+                      <DrawerContent className="h-[50%]">
+                        <DrawerHeader className="flex justify-center items-center flex-col">
+                          <DrawerTitle>Qr Code Generator</DrawerTitle>
+                          <DrawerDescription>
+                            QR Code generation in progress. This is the QR Code
+                            for that website.
+                          </DrawerDescription>
+                        </DrawerHeader>
+                        <EventGenerator
+                          className="px-4"
+                          dataUser={[data?.data?.fullName, data?.data?._id]}
+                        />
+                      </DrawerContent>
+                    </Drawer>
                   </div>
                 </div>
 
@@ -711,6 +734,61 @@ const ProfilePage: React.FC = () => {
 };
 
 function QrCodeGenerator({ className, dataUser }: any) {
+  const [disabled, setDisabled] = useState(false);
+  const UrlWebSiteForUser = `https://lastartup-club-popcard.vercel.app/pop-card-users/${dataUser[1]}`;
+  const QrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${UrlWebSiteForUser}`;
+  const [isHidden, setIsHidden] = useState(true);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setIsHidden(false);
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, []); // Run the effect only once when the component mounts
+
+  const handleDownload = async () => {
+    try {
+      const response = await fetch(QrCodeUrl);
+      const blob = await response.blob();
+
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "qrcode.png";
+      link.click();
+    } catch (error) {
+      console.error("Error downloading QR code:", error);
+    }
+  };
+
+  return (
+    <div className="flex justify-center items-center flex-col">
+      <div className="flex justify-center items-center">
+        {!isHidden && (
+          <div>
+            <img
+              src={QrCodeUrl}
+              className={`h-[200px] max-w-sm rounded-lg shadow-none hover:shadow-lg hover:shadow-black/30`}
+              alt=""
+            />
+            <Button
+              onClick={handleDownload}
+              className="mt-4 w-full bg-[#111013] px-4 py-2 rounded"
+            >
+              Download QR Code
+            </Button>
+          </div>
+        )}
+        {isHidden && (
+          <div className="bg-white flex space-x-12 p-12 justify-center items-center w-full ">
+            <div className="h-20 w-20 bg-[#ffd5a1] p-2 animate-spin rounded-md"></div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+function EventGenerator({ className, dataUser }: any) {
   const [disabled, setDisabled] = useState(false);
   const UrlWebSiteForUser = `https://lastartup-club-popcard.vercel.app/pop-card-users/${dataUser[1]}`;
   const QrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${UrlWebSiteForUser}`;
