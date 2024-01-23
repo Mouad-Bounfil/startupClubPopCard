@@ -1,7 +1,7 @@
 import { FaWhatsapp, FaGithub, FaFacebookF , FaYoutube , FaLinkedin } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
 
-import { FaInstagram, FaEnvelope } from "react-icons/fa";
+import { FaInstagram, FaEnvelope , FaFacebookSquare } from "react-icons/fa";
 import { Button } from "./ui/button";
 
 import React, { useState } from "react";
@@ -27,7 +27,7 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
       case "github":
         return <FaGithub className="h-4 w-4" />;
       case "facebook":
-        return <FaFacebookF className="h-4 w-4" />;
+        return <FaFacebookSquare  className="h-4 w-4" />;
       case "twitter":
         return <RiTwitterXFill className="h-4 w-4" />;
       case "youtube":
