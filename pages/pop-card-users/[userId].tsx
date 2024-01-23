@@ -609,6 +609,11 @@ const ProfilePage: React.FC = () => {
                       that never sleeps The city that never sleepsThe city that
                       never sleeps The city that never sleeps
                     </p>
+                    <Button
+              className="text-black animate-fade-right animate-once animate-delay-300 active:bg-gray-500 w-full mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]"
+            >
+              View Details
+            </Button>
                   </div>
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-lg bg-white">
@@ -651,6 +656,12 @@ const ProfilePage: React.FC = () => {
                       that never sleeps The city that never sleepsThe city that
                       never sleeps The city that never sleeps
                     </p>
+                    <Button
+              className="text-black animate-fade-right animate-once animate-delay-300 active:bg-gray-500 w-full mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]"
+            >
+              View Details
+            </Button>
+
                   </div>
                 </div>
 
