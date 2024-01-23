@@ -590,7 +590,7 @@ const ProfilePage: React.FC = () => {
                       </div>
                     </a>
                     <a>
-                      <div className="text-sm absolute top-0 right-0 bg-[#fe9917] px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
+                      <div className="text-sm absolute top-0 right-0 bg-white px-4 text-black rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
                         <span className="font-bold text-[#111013]">27</span>
                         <small className="text-[#111013]">March</small>
                       </div>
@@ -607,12 +607,12 @@ const ProfilePage: React.FC = () => {
                       never sleeps The city that never sleeps
                     </p>
                     <Drawer>
-                      <DrawerTrigger>
-                        <Button className="text-black animate-fade-right animate-once animate-delay-300 active:bg-gray-500 w-full mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
+                      <DrawerTrigger className="w-full">
+                        <Button className="text-black animate-fade-right animate-once animate-delay-300 w-full active:bg-gray-500 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
                           View Details
                         </Button>
                       </DrawerTrigger>
-                      <DrawerContent className="h-[50%]">
+                      <DrawerContent className="h-[100%]">
                         <DrawerHeader className="flex justify-center items-center flex-col">
                           <DrawerTitle>Qr Code Generator</DrawerTitle>
                           <DrawerDescription>
@@ -649,7 +649,7 @@ const ProfilePage: React.FC = () => {
                       </div>
                     </a>
                     <a href="!#">
-                      <div className="text-sm absolute top-0 right-0 bg-[#fe9917] px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
+                      <div className="text-sm absolute top-0 right-0 bg-white px-4 text-black rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
                         <span className="font-bold text-[#111013]">27</span>
                         <small className="text-[#111013]">March</small>
                       </div>
@@ -666,12 +666,12 @@ const ProfilePage: React.FC = () => {
                       never sleeps The city that never sleeps
                     </p>
                     <Drawer>
-                      <DrawerTrigger>
-                        <Button className="text-black animate-fade-right animate-once animate-delay-300 active:bg-gray-500 w-full mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
+                      <DrawerTrigger className="w-full">
+                        <Button className="text-black animate-fade-right animate-once animate-delay-300 w-full active:bg-gray-500 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
                           View Details
                         </Button>
                       </DrawerTrigger>
-                      <DrawerContent className="h-[50%]">
+                      <DrawerContent className="h-[100%]">
                         <DrawerHeader className="flex justify-center items-center flex-col">
                           <DrawerTitle>Qr Code Generator</DrawerTitle>
                           <DrawerDescription>
@@ -789,59 +789,7 @@ function QrCodeGenerator({ className, dataUser }: any) {
   );
 }
 function EventGenerator({ className, dataUser }: any) {
-  const [disabled, setDisabled] = useState(false);
-  const UrlWebSiteForUser = `https://lastartup-club-popcard.vercel.app/pop-card-users/${dataUser[1]}`;
-  const QrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${UrlWebSiteForUser}`;
-  const [isHidden, setIsHidden] = useState(true);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setIsHidden(false);
-    }, 500);
-
-    return () => clearTimeout(timeoutId);
-  }, []); // Run the effect only once when the component mounts
-
-  const handleDownload = async () => {
-    try {
-      const response = await fetch(QrCodeUrl);
-      const blob = await response.blob();
-
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = "qrcode.png";
-      link.click();
-    } catch (error) {
-      console.error("Error downloading QR code:", error);
-    }
-  };
-
-  return (
-    <div className="flex justify-center items-center flex-col">
-      <div className="flex justify-center items-center">
-        {!isHidden && (
-          <div>
-            <img
-              src={QrCodeUrl}
-              className={`h-[200px] max-w-sm rounded-lg shadow-none hover:shadow-lg hover:shadow-black/30`}
-              alt=""
-            />
-            <Button
-              onClick={handleDownload}
-              className="mt-4 w-full bg-[#111013] px-4 py-2 rounded"
-            >
-              Download QR Code
-            </Button>
-          </div>
-        )}
-        {isHidden && (
-          <div className="bg-white flex space-x-12 p-12 justify-center items-center w-full ">
-            <div className="h-20 w-20 bg-[#ffd5a1] p-2 animate-spin rounded-md"></div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+  return <div>mouad</div>;
 }
 
 export default ProfilePage;
