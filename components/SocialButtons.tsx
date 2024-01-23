@@ -77,7 +77,7 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
     
 
     socialButtons.sort((a, b) => {
-      const customOrder = ["whatsapp", "linkedIn","github", "instagram", "twitter", "facebook", "youtube"];
+      const customOrder = ["whatsapp", "linkedIn", "instagram", "twitter", "facebook","github", "youtube"];
       return customOrder.indexOf(a.key) - customOrder.indexOf(b.key);
     });
   const [showAllButtons, setShowAllButtons] = useState(false);
@@ -96,7 +96,7 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
           >
             <Button
               onClick={onClick}
-              className="animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-2 bg-white text-[#1d1d1d] border-[1px] border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
+              className="animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-4 bg-white text-[#1d1d1d] border-[1px] border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
             >
               {icon}
               <span className="text-[16px]">{text}</span>
@@ -112,7 +112,7 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
           >
             <Button
               onClick={onClick}
-              className="animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-2 bg-white text-[#1d1d1d] border-[1px] border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
+              className="animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-4 bg-white text-[#1d1d1d] border-[1px] border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
             >
               {icon}
               <span className="text-[17px]">{text}</span>

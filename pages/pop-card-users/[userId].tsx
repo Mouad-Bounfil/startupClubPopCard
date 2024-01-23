@@ -317,7 +317,7 @@ const ProfilePage: React.FC = () => {
               {data?.data?.jobTitle} {data?.data?.jobTitle && " - "}{" "}
               <span className="text-[#0d0d0d]">LaStartupClub</span>
             </div>
-            <div className="text-center font-sans text-[#595b5a] text-[17px] font-[400] w-[85%] mt-5 animate-fade-up animate-delay-300">
+            <div className="text-center font-sans text-[#595b5a] text-[17px] font-[400] w-[85%] mt-3 animate-fade-up animate-delay-300">
               {data?.data?.shortDescription.en ? (
                 data?.data?.shortDescription.en
               ) : (
