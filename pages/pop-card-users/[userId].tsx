@@ -598,9 +598,9 @@ const ProfilePage: React.FC = () => {
             </Button>
             <RWebShare
               data={{
-                text: "Check out this link: \n",
-                url: `https://lastartupstation.vercel.app/profile-v2/${data?.data?.firstName}-${data?.data?.lastName}`,
-                title: "Qr Code ",
+                text: "Check out this link 🚀: \n",
+                url: `https://lastartup-club-popcard.vercel.app/pop-card-users/${data?.data?._id}`,
+                title: "Website link ",
               }}
               onClick={() => console.log("shared successfully!")}
             >
@@ -642,15 +642,30 @@ function QrCodeGenerator({ className, dataUser }: any) {
     return () => clearTimeout(timeoutId);
   }, []); // Run the effect only once when the component mounts
 
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = QrCodeUrl;
+    link.download = "qrcode.png";
+    link.click();
+  };
+
   return (
     <div className="flex justify-center items-center flex-col">
       <div className="flex justify-center items-center">
         {!isHidden && (
-          <img
-            src={QrCodeUrl}
-            className={`h-[200px] max-w-sm rounded-lg shadow-none hover:shadow-lg hover:shadow-black/30`}
-            alt=""
-          />
+          <div>
+            <img
+              src={QrCodeUrl}
+              className={`h-[200px] max-w-sm rounded-lg shadow-none hover:shadow-lg hover:shadow-black/30`}
+              alt=""
+            />
+            <Button
+              onClick={handleDownload}
+              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+            >
+              Download QR Code
+            </Button>
+          </div>
         )}
         {isHidden && (
           <div className="bg-white flex space-x-12 p-12 justify-center items-center w-full ">
