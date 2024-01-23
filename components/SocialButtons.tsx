@@ -87,7 +87,7 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
   const buttonsToShow = showAllButtons ? socialButtons : limitedButtons;
 
   return (
-    <div className="flex p-2 justify-center items-center flex-wrap gap-2 mt-6 mb-5">
+    <div className="flex p-2 justify-center items-center flex-wrap gap-2 mt-2 mb-5">
       {buttonsToShow.map(({ key, icon, text, link, onClick }) =>
         key === "whatsapp" ? (
           <a
