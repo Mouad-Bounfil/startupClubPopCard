@@ -638,7 +638,7 @@ const ProfilePage: React.FC = () => {
                 <div className="rounded-lg overflow-hidden shadow-lg bg-white">
                   <a></a>
                   <div className="relative">
-                    <a href="#">
+                    <a>
                       <img
                         className="w-full"
                         src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/1949084/183054_645045.jpeg"
@@ -646,7 +646,7 @@ const ProfilePage: React.FC = () => {
                       />
                       <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
                     </a>
-                    <a href="#!">
+                    <a>
                       <div className="font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
                         <img
                           className="w-[100px] "
@@ -655,8 +655,8 @@ const ProfilePage: React.FC = () => {
                         />
                       </div>
                     </a>
-                    <a href="!#">
-                      <div className="text-sm absolute top-0 right-0 bg-[#fe9917] px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
+                    <a>
+                    <div className="text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
                         <span className="font-bold text-[#111013]">27</span>
                         <small className="text-[#111013]">March</small>
                       </div>
