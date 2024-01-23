@@ -618,7 +618,7 @@ const ProfilePage: React.FC = () => {
                     </p>
                     <Drawer>
                       <DrawerTrigger className="w-full">
-                        <Button className="text-black animate-fade-right animate-once animate-delay-300 w-full active:bg-gray-500 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
+                        <Button className="text-black animate-fade-right animate-once animate-delay-300 w-full active:bg-gray-100 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
                           View Details
                         </Button>
                       </DrawerTrigger>
@@ -674,7 +674,7 @@ const ProfilePage: React.FC = () => {
                     </p>
                     <Drawer>
                       <DrawerTrigger className="w-full">
-                        <Button className="text-black animate-fade-right animate-once animate-delay-300 w-full active:bg-gray-500 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
+                        <Button className="text-black animate-fade-right animate-once animate-delay-300 w-full active:bg-gray-100 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
                           View Details
                         </Button>
                       </DrawerTrigger>
@@ -813,7 +813,7 @@ function EventGenerator() {
 
   return (
     <div className="w-full flex flex-col justify-center items-center">
-      <Carousel setApi={setApi} className="w-[80%] max-w-xs">
+      <Carousel setApi={setApi} className="w-[70%] max-w-xs">
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index}>
@@ -829,7 +829,7 @@ function EventGenerator() {
         <CarouselNext />
       </Carousel>
       <div>
-        
+
       </div>
     </div>
   );
