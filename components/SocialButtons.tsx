@@ -15,23 +15,23 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
   const getSocialIcon = (key) => {
     switch (key) {
       case "whatsapp":
-        return <FaWhatsapp className="h-4 w-4" />;
+        return <FaWhatsapp className="h-5 w-5" />;
       case "linkedIn":
         return (
-          <FaLinkedin className="h-4 w-4"/>
+          <FaLinkedin className="h-5 w-5"/>
         );
       case "instagram":
-        return <FaInstagram className="h-4 w-4" />;
+        return <FaInstagram className="h-5 w-5" />;
       case "email":
-        return <FaEnvelope className="h-4 w-4" />;
+        return <FaEnvelope className="h-5 w-5" />;
       case "github":
-        return <FaGithub className="h-4 w-4" />;
+        return <FaGithub className="h-5 w-5" />;
       case "facebook":
-        return <FaFacebookSquare  className="h-4 w-4" />;
+        return <FaFacebookSquare  className="h-5 w-5" />;
       case "twitter":
-        return <RiTwitterXFill className="h-4 w-4" />;
+        return <RiTwitterXFill className="h-5 w-5" />;
       case "youtube":
-        return <FaYoutube  className="h-4 w-4" />;
+        return <FaYoutube  className="h-5 w-5" />;
         
       // Add cases for other social media keys as needed
       default:
