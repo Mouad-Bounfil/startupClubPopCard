@@ -77,7 +77,7 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
     
 
     socialButtons.sort((a, b) => {
-      const customOrder = ["whatsapp", "linkedIn", "instagram", "twitter", "facebook", "github", "youtube"];
+      const customOrder = ["whatsapp", "linkedIn","github", "instagram", "twitter", "facebook", "youtube"];
       return customOrder.indexOf(a.key) - customOrder.indexOf(b.key);
     });
   const [showAllButtons, setShowAllButtons] = useState(false);
