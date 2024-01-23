@@ -32,7 +32,7 @@ const ProfilePage: React.FC = () => {
   const { data, isValidating, error, isLoading } = useSWR(
     `pop-card-users/${userId}`
   );
-
+  const [expandedState, setExpandedState] = useState({});
   const [contactInfo, setContactInfo] = useState({
     fn: " ",
     photo: {
@@ -151,10 +151,41 @@ const ProfilePage: React.FC = () => {
     socialMedia: data?.data?.socialLinks || {},
   };
   const webSite = () => {
-    router.push(data?.data?.website)
+    router.push(data?.data?.website);
   };
 
+  function formatDateRange(
+    startDateString: string,
+    endDateString: string
+  ): string {
+    const formatDate = (dateString: string): string => {
+      const options: Intl.DateTimeFormatOptions = {
+        month: "short",
+        year: "numeric",
+      };
+      return new Date(dateString).toLocaleDateString("fr-FR", options);
+    };
 
+    const formattedStartDate: string = formatDate(startDateString);
+    const formattedEndDate: string = formatDate(endDateString);
+
+    const startMonth = new Date(startDateString).getMonth();
+    const endMonth = new Date(endDateString).getMonth();
+    const monthDifference = endMonth - startMonth;
+
+    return `${formattedStartDate} - ${formattedEndDate} · ${monthDifference} mois`;
+  }
+
+  function formatCityName(city: string): string {
+    return city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
+  }
+
+  const handleToggleExpansion = (paragraphId) => {
+    setExpandedState((prev) => ({
+      ...prev,
+      [paragraphId]: !prev[paragraphId],
+    }));
+  };
 
   if (error) {
     if (error?.response?.status === 300) {
@@ -273,7 +304,7 @@ const ProfilePage: React.FC = () => {
               {data?.data?.firstName} {data?.data?.lastName}
             </h3>
             <div className="font-sans text-[#595b5a] text-[17px] font-medium animate-fade-up animate-delay-300">
-              {data?.data?.jobTitle} {data?.data?.jobTitle && " - "}  {" "}
+              {data?.data?.jobTitle} {data?.data?.jobTitle && " - "}{" "}
               <span className="text-[#0d0d0d]">LaStartupClub</span>
             </div>
             <div className="text-center font-sans text-[#595b5a] text-[17px] font-[400] w-[85%] mt-5 animate-fade-up animate-delay-300">
@@ -355,7 +386,10 @@ const ProfilePage: React.FC = () => {
                 <ul className="max-w-md divide-y divide-gray-200 ">
                   {data?.data?.phone ? (
                     <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300 rounded-[10px] group active:bg-slate-100">
-                      <div className="flex items-center space-x-4 rtl:space-x-reverse " onClick={callPhoneNumber}>
+                      <div
+                        className="flex items-center space-x-4 rtl:space-x-reverse "
+                        onClick={callPhoneNumber}
+                      >
                         <div className="flex-shrink-0 ">
                           <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
                             <svg
@@ -379,17 +413,19 @@ const ProfilePage: React.FC = () => {
                             Phone
                           </p>
                           <p className="flex text-[16px] text-gray-900 truncate dark:text-gray-400">
-                            <div className="mr-2">{data?.data?.phone}</div> 
+                            <div className="mr-2">{data?.data?.phone}</div>
                           </p>
                         </div>
-                        
                       </div>
                     </li>
                   ) : null}
 
                   {data?.data?.email ? (
                     <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300 rounded-[10px] group active:bg-slate-100">
-                      <div className="flex items-center space-x-4 rtl:space-x-reverse" onClick={sendEmail}>
+                      <div
+                        className="flex items-center space-x-4 rtl:space-x-reverse"
+                        onClick={sendEmail}
+                      >
                         <div className="flex-shrink-0">
                           <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
                             <svg
@@ -422,7 +458,10 @@ const ProfilePage: React.FC = () => {
 
                   {data?.data?.website ? (
                     <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300 rounded-[10px] group active:bg-slate-100">
-                      <div className="flex items-center space-x-4 rtl:space-x-reverse" onClick={webSite}>
+                      <div
+                        className="flex items-center space-x-4 rtl:space-x-reverse"
+                        onClick={webSite}
+                      >
                         <div className="flex-shrink-0">
                           <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
                             <svg
@@ -464,10 +503,11 @@ const ProfilePage: React.FC = () => {
                       <li
                         key={experience.id}
                         className="pb-2 sm:pb-4 pt-2 animate-fade-up animate-delay-300 rounded-[10px] group active:bg-slate-100"
+                        onClick={() => handleToggleExpansion(experience.id)}
                       >
-                        <div className="flex items-center space-x-4 rtl:space-x-reverse ">
+                        <div className="flex items-start space-x-4 rtl:space-x-reverse ">
                           <div className="flex-shrink-0">
-                            <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
+                            <Button className="mt-2 flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -488,7 +528,24 @@ const ProfilePage: React.FC = () => {
                             <p className="text-[16px] font-medium text-gray-500 truncate dark:text-white">
                               {experience.title}
                             </p>
-                            <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
+                            <p className="text-[14px]  text-gray-500   dark:text-white">
+                              {formatDateRange(
+                                experience?.dateInfos?.start,
+                                experience?.dateInfos?.end
+                              )}
+                            </p>
+                            <p className="text-[14px]  text-gray-500 truncate dark:text-white">
+                              {formatCityName(experience?.city)} -{" "}
+                              {experience?.country}
+                            </p>
+                            <p
+                              key={experience.id}
+                              className={`text-[16px] text-gray-900 dark:text-gray-400 mt-2 cursor-pointer ${
+                                expandedState[experience.id]
+                                  ? "block"
+                                  : "truncate"
+                              }`}
+                            >
                               {experience.description?.en}
                             </p>
                           </div>
