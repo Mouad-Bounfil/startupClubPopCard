@@ -354,9 +354,9 @@ const ProfilePage: React.FC = () => {
                 </div>
                 <ul className="max-w-md divide-y divide-gray-200 ">
                   {data?.data?.phone ? (
-                    <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
-                      <div className="flex items-center space-x-4 rtl:space-x-reverse" onClick={callPhoneNumber}>
-                        <div className="flex-shrink-0">
+                    <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300 rounded-[10px] group active:bg-slate-100">
+                      <div className="flex items-center space-x-4 rtl:space-x-reverse " onClick={callPhoneNumber}>
+                        <div className="flex-shrink-0 ">
                           <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -388,7 +388,7 @@ const ProfilePage: React.FC = () => {
                   ) : null}
 
                   {data?.data?.email ? (
-                    <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
+                    <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300 rounded-[10px] group active:bg-slate-100">
                       <div className="flex items-center space-x-4 rtl:space-x-reverse" onClick={sendEmail}>
                         <div className="flex-shrink-0">
                           <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
@@ -421,7 +421,7 @@ const ProfilePage: React.FC = () => {
                   ) : null}
 
                   {data?.data?.website ? (
-                    <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300">
+                    <li className="pb-2 sm:pb-4 pt-2  animate-fade-up animate-delay-300 rounded-[10px] group active:bg-slate-100">
                       <div className="flex items-center space-x-4 rtl:space-x-reverse" onClick={webSite}>
                         <div className="flex-shrink-0">
                           <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
@@ -463,9 +463,9 @@ const ProfilePage: React.FC = () => {
                     {data?.data?.experiences.map((experience) => (
                       <li
                         key={experience.id}
-                        className="pb-2 sm:pb-4 pt-2 animate-fade-up animate-delay-300"
+                        className="pb-2 sm:pb-4 pt-2 animate-fade-up animate-delay-300 rounded-[10px] group active:bg-slate-100"
                       >
-                        <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div className="flex items-center space-x-4 rtl:space-x-reverse ">
                           <div className="flex-shrink-0">
                             <Button className="flex justify-between items-center gap-2 pl-2 pr-2 pt-5 pb-5  bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]">
                               <svg
