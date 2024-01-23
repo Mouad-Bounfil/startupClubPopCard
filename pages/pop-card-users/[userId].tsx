@@ -601,8 +601,12 @@ const ProfilePage: React.FC = () => {
                     </a>
                     <a>
                       <div className="animate-fade-right animate-once animate-delay-300 text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
-                        <span className="animate-fade-right animate-once animate-delay-300 font-bold text-[#111013]">27</span>
-                        <small className="animate-fade-right animate-once animate-delay-300 text-[#111013]">March</small>
+                        <span className="animate-fade-right animate-once animate-delay-300 font-bold text-[#111013]">
+                          27
+                        </span>
+                        <small className="animate-fade-right animate-once animate-delay-300 text-[#111013]">
+                          March
+                        </small>
                       </div>
                     </a>
                   </div>
@@ -622,12 +626,15 @@ const ProfilePage: React.FC = () => {
                           View Details
                         </Button>
                       </DrawerTrigger>
-                      <DrawerContent className="h-[70%]">
+                      <DrawerContent className="h-[90%]">
                         <DrawerHeader className="flex justify-center items-center flex-col">
-                          <DrawerTitle>Qr Code Generator</DrawerTitle>
+                          <DrawerTitle><img
+                          className="animate-fade-right animate-once animate-delay-300  w-[100px] "
+                          src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
+                          alt=""
+                        /></DrawerTitle>
                           <DrawerDescription>
-                            QR Code generation in progress. This is the QR Code
-                            for that website.
+                          🚀 Discover the Future of Innovation at LaStartupClub.Club Event! 🚀
                           </DrawerDescription>
                         </DrawerHeader>
                         <EventGenerator />
@@ -656,7 +663,7 @@ const ProfilePage: React.FC = () => {
                       </div>
                     </a>
                     <a>
-                    <div className="animate-fade-right animate-once animate-delay-300 text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
+                      <div className="animate-fade-right animate-once animate-delay-300 text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
                         <span className="font-bold text-[#111013]">27</span>
                         <small className="text-[#111013]">March</small>
                       </div>
@@ -678,12 +685,15 @@ const ProfilePage: React.FC = () => {
                           View Details
                         </Button>
                       </DrawerTrigger>
-                      <DrawerContent className="h-[70%]">
+                      <DrawerContent className="h-[90%]">
                         <DrawerHeader className="flex justify-center items-center flex-col">
-                          <DrawerTitle>Qr Code Generator</DrawerTitle>
+                          <DrawerTitle><img
+                          className="animate-fade-right animate-once animate-delay-300  w-[100px] "
+                          src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
+                          alt=""
+                        /></DrawerTitle>
                           <DrawerDescription>
-                            QR Code generation in progress. This is the QR Code
-                            for that website.
+                          🚀 Discover the Future of Innovation at LaStartupClub.Club Event! 🚀
                           </DrawerDescription>
                         </DrawerHeader>
                         <EventGenerator />
@@ -797,7 +807,11 @@ function EventGenerator() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
-
+  const imageUrls = [
+    "https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/1949084/136915_550906.jpg",
+    "//custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/1949084/40417_121427.jpg",
+    "//custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/1949084/626647_949206.jpg",
+  ];
   React.useEffect(() => {
     if (!api) {
       return;
@@ -815,11 +829,18 @@ function EventGenerator() {
     <div className="w-full flex flex-col justify-center items-center">
       <Carousel setApi={setApi} className="w-[70%] max-w-xs">
         <CarouselContent>
-          {Array.from({ length: 5 }).map((_, index) => (
+          {imageUrls.map((url, index) => (
             <CarouselItem key={index}>
               <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="text-4xl font-semibold">{index + 1}</span>
+                <CardContent
+                  className="flex items-center justify-center h-[300px]"
+                  style={{
+                    backgroundImage: `url(${url})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                >
+                  {/* Other content within the CarouselItem */}
                 </CardContent>
               </Card>
             </CarouselItem>
@@ -828,9 +849,25 @@ function EventGenerator() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <div>
+      <div className="md:flex-1 px-4">
+        
+        <div className="flex items-center space-x-4 my-4">
+          <div>
+            <div className="rounded-lg bg-gray-100 flex py-2 px-3">
+              <span className="text-indigo-400 mr-1 mt-1">$</span>
+              <span className="font-bold text-indigo-600 text-3xl">25</span>
+            </div>
+          </div>
+          <div className="flex-1">
+            <p className="text-green-500 text-xl font-semibold">Save 12%</p>
+            <p className="text-gray-400 text-sm">Inclusive of all Taxes.</p>
+          </div>
+        </div>
 
-      </div>
+        <p className="text-gray-500">Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae exercitationem porro saepe ea harum corrupti vero id laudantium enim, libero blanditiis expedita cupiditate a est.</p>
+
+        
+        </div>
     </div>
   );
 }
