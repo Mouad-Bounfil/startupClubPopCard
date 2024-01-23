@@ -579,38 +579,38 @@ const ProfilePage: React.FC = () => {
             <TabsContent value="event" className="w-[100%]">
               <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5 mb-5">
                 {/* Card 1 */}
-                <div className="rounded-lg overflow-hidden shadow-lg bg-white">
+                <div className="animate-fade-right animate-once animate-delay-300 rounded-lg overflow-hidden shadow-lg bg-white">
                   <a></a>
                   <div className="relative">
                     <a>
                       <img
-                        className="w-full"
+                        className="animate-fade-right animate-once animate-delay-300 w-full"
                         src="https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
                         alt="Sunset in the mountains"
                       />
                       <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
                     </a>
                     <a>
-                      <div className="font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
+                      <div className="animate-fade-right animate-once animate-delay-300 font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
                         <img
-                          className="w-[100px] "
+                          className="animate-fade-right animate-once animate-delay-300  w-[100px] "
                           src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
                           alt=""
                         />
                       </div>
                     </a>
                     <a>
-                      <div className="text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
-                        <span className="font-bold text-[#111013]">27</span>
-                        <small className="text-[#111013]">March</small>
+                      <div className="animate-fade-right animate-once animate-delay-300 text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
+                        <span className="animate-fade-right animate-once animate-delay-300 font-bold text-[#111013]">27</span>
+                        <small className="animate-fade-right animate-once animate-delay-300 text-[#111013]">March</small>
                       </div>
                     </a>
                   </div>
                   <div className="px-6 py-4 ">
-                    <a className="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
+                    <a className="animate-fade-right animate-once animate-delay-300 font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
                       Best View in Newyork City
                     </a>
-                    <p className="text-gray-500 text-[15px] line-clamp-3 ">
+                    <p className="animate-fade-right animate-once animate-delay-300 text-gray-500 text-[15px] line-clamp-3 ">
                       The city that never sleeps The city that never sleepsThe
                       city that never sleeps The city that never sleeps The city
                       that never sleeps The city that never sleepsThe city that
@@ -618,7 +618,7 @@ const ProfilePage: React.FC = () => {
                     </p>
                     <Drawer>
                       <DrawerTrigger className="w-full">
-                        <Button className="text-black animate-fade-right animate-once animate-delay-300 w-full active:bg-gray-100 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
+                        <Button className="text-black animate-fade-right animate-once animate-delay-300 w-full active:bg-slate-100 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
                           View Details
                         </Button>
                       </DrawerTrigger>
@@ -635,9 +635,9 @@ const ProfilePage: React.FC = () => {
                     </Drawer>
                   </div>
                 </div>
-                <div className="rounded-lg overflow-hidden shadow-lg bg-white">
+                <div className="animate-fade-right animate-once animate-delay-300 rounded-lg overflow-hidden shadow-lg bg-white">
                   <a></a>
-                  <div className="relative">
+                  <div className="animate-fade-right animate-once animate-delay-300 relative">
                     <a>
                       <img
                         className="w-full"
@@ -647,7 +647,7 @@ const ProfilePage: React.FC = () => {
                       <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
                     </a>
                     <a>
-                      <div className="font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
+                      <div className=" animate-fade-right animate-once animate-delay-300 font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
                         <img
                           className="w-[100px] "
                           src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
@@ -656,17 +656,17 @@ const ProfilePage: React.FC = () => {
                       </div>
                     </a>
                     <a>
-                    <div className="text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
+                    <div className="animate-fade-right animate-once animate-delay-300 text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
                         <span className="font-bold text-[#111013]">27</span>
                         <small className="text-[#111013]">March</small>
                       </div>
                     </a>
                   </div>
-                  <div className="px-6 py-4 ">
-                    <a className="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
+                  <div className="px-6 py-4">
+                    <a className=" animate-fade-right animate-once animate-delay-300 font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
                       Best View in Newyork City
                     </a>
-                    <p className="text-gray-500 text-[15px] line-clamp-3 ">
+                    <p className="animate-fade-right animate-once animate-delay-300 text-gray-500 text-[15px] line-clamp-3 ">
                       The city that never sleeps The city that never sleepsThe
                       city that never sleeps The city that never sleeps The city
                       that never sleeps The city that never sleepsThe city that
@@ -674,7 +674,7 @@ const ProfilePage: React.FC = () => {
                     </p>
                     <Drawer>
                       <DrawerTrigger className="w-full">
-                        <Button className="text-black animate-fade-right animate-once animate-delay-300 w-full active:bg-gray-100 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
+                        <Button className="text-black animate-fade-right animate-once animate-delay-300 w-full active:bg-slate-100 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
                           View Details
                         </Button>
                       </DrawerTrigger>
