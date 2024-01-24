@@ -560,7 +560,7 @@ const ProfilePage: React.FC = () => {
                                     )}
                                   </p>
                                   <MdExpandMore
-                                    className={`w-5 h-5 ${
+                                    className={`w-6 h-6 ${
                                       expandedState[experience.id]
                                         ? "hidden"
                                         : ""
