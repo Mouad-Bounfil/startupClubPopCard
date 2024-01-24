@@ -283,7 +283,7 @@ const ProfilePage: React.FC = () => {
 
             <Drawer>
               <DrawerTrigger>
-                <BsQrCode className="w-8 h-8 animate-fade-up animate-once animate-delay-100" />
+                <BsQrCode className="w-8 h-8" />
               </DrawerTrigger>
               <DrawerContent className="h-[70%]">
                 <DrawerHeader className="flex justify-center items-center flex-col">
