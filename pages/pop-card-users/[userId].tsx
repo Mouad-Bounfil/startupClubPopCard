@@ -265,7 +265,7 @@ const ProfilePage: React.FC = () => {
 
   return (
     <>
-      <div className="w-full h-screen  flex flex-col justify-start items-center bg-gray-200">
+      <div className="w-full h-[100vh] flex flex-col justify-start items-center bg-gray-200">
         <div className="w-[90%] flex justify-between items-center mt-5 pl-1 pr-1">
           <a href="https://www.lastartup.club/">
             <img
