@@ -508,7 +508,7 @@ const ProfilePage: React.FC = () => {
                   ) : null}
                 </ul>
               </div>
-              {data?.data?.experiences && (
+              {data?.data?.experiences && data?.data?.experiences.length !== 0 && (
                 <div className="bg-white p-5 rounded-2xl mt-3 animate-fade-up animate-delay-300">
                   <div className="font-sans leading-20 text-[#0d0d0d] text-[18px] font-[600] mb-2">
                     Work
