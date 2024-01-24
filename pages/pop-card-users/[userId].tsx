@@ -309,7 +309,7 @@ const ProfilePage: React.FC = () => {
               className="object-cover object-center h-32 w-full"
               src={data?.data?.profilePic}
               alt="Woman looking front"
-            />: <img className="object-cover object-center h-32 w-full" src={`https://ui-avatars.com/api/?name=${data?.data?.firstName}+${data?.data?.lastName}&color=fff&background=a0a0a0`}/>}
+            />: <img className="object-cover object-center h-32 w-full" src={`https://ui-avatars.com/api/?name=${data?.data?.firstName}+${data?.data?.lastName}&color=ff9a16&background=071938`}/>}
           </div>
           <div className="text-center flex flex-col justify-center items-center mt-2">
             <h3 className="font-sans leading-20 text-[#0d0d0d] text-[25px] font-semibold animate-fade-up animate-once animate-delay-300">
