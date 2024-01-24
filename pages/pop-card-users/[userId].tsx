@@ -19,7 +19,6 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { BiLinkExternal } from "react-icons/bi";
 import {
   Drawer,
   DrawerClose,
@@ -433,10 +432,10 @@ const ProfilePage: React.FC = () => {
                             </Button>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="flex justify-between items-center text-[16px] font-medium  text-gray-500 truncate dark:text-white">
-                            <div>Phone</div> <BiLinkExternal className="text-gray-500 w-4 h-4"/>
+                            <p className="text-[16px] font-medium  text-gray-500 truncate dark:text-white">
+                              Phone
                             </p>
-                            <p className=" just text-[16px] text-gray-900 truncate dark:text-gray-400">
+                            <p className="flex text-[16px] text-gray-900 truncate dark:text-gray-400">
                               <div className="mr-2">{data?.data?.phone}</div>
                             </p>
                           </div>
@@ -469,8 +468,8 @@ const ProfilePage: React.FC = () => {
                             </Button>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="flex justify-between items-center text-[16px] font-medium  text-gray-500 truncate dark:text-white">
-                            <div>Email</div> <BiLinkExternal className="text-gray-500 w-4 h-4"/>
+                            <p className="text-[16px] font-medium  text-gray-500 truncate dark:text-white">
+                              Email
                             </p>
                             <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
                               {data?.data?.email}
@@ -505,8 +504,8 @@ const ProfilePage: React.FC = () => {
                             </Button>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="flex items-center justify-between text-[16px] font-medium  text-gray-500 truncate dark:text-white">
-                              <div>Web Site</div> <BiLinkExternal className="text-gray-500 w-4 h-4"/>
+                            <p className="text-[16px] font-medium  text-gray-500 truncate dark:text-white">
+                              Web Site
                             </p>
                             <p className="text-[16px] text-gray-900 truncate dark:text-gray-400">
                               {data?.data?.website}
