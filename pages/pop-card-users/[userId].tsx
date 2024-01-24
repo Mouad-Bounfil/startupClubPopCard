@@ -577,7 +577,7 @@ const ProfilePage: React.FC = () => {
                 </div>
               )}
             </TabsContent>
-            <TabsContent value="about" className="w-[100%] shadow mb-10">
+            <TabsContent value="about" className="w-[100%] mb-10">
               <div className="bg-white p-5 rounded-2xl animate-fade-up animate-delay-300">
                 <div className="font-sans leading-20 text-[#0d0d0d] text-[18px] font-[600] mb-2">
                   About me
