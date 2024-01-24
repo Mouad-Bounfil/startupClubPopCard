@@ -581,6 +581,67 @@ const ProfilePage: React.FC = () => {
                 {/* Card 1 */}
                 <div className="animate-fade-right animate-once animate-delay-300 rounded-lg overflow-hidden shadow-lg bg-white">
                   <a></a>
+                  <div className="animate-fade-right animate-once animate-delay-300 relative">
+                    <a>
+                      <img
+                        className="w-full"
+                        src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/1949084/183054_645045.jpeg"
+                        alt="Sunset in the mountains"
+                      />
+                      <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
+                    </a>
+                    <a>
+                      <div className=" animate-fade-right animate-once animate-delay-300 font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
+                        <img
+                          className="w-[100px] "
+                          src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
+                          alt=""
+                        />
+                      </div>
+                    </a>
+                    <a>
+                      <div className="animate-fade-right animate-once animate-delay-300 text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
+                        <span className="font-bold text-[#111013]">27</span>
+                        <small className="text-[#111013]">March</small>
+                      </div>
+                    </a>
+                  </div>
+                  <div className="px-6 py-4">
+                    <a className=" animate-fade-right animate-once animate-delay-300 font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
+                      Networking Opportunities
+                    </a>
+                    <p className="animate-fade-right animate-once animate-delay-300 text-gray-500 text-[15px] line-clamp-3 ">
+                      Connect with like-minded individuals, entrepreneurs, and
+                      industry experts. Build valuable connections that could
+                      shape the future of your business.
+                    </p>
+                    <Drawer>
+                      <DrawerTrigger className="w-full">
+                        <Button className="text-black animate-fade-right animate-once animate-delay-300 w-full active:bg-slate-100 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
+                          View Details
+                        </Button>
+                      </DrawerTrigger>
+                      <DrawerContent className="h-[95%]">
+                        <DrawerHeader className="flex justify-center items-center flex-col">
+                          <DrawerTitle>
+                            <img
+                              className="animate-fade-right animate-once animate-delay-300  w-[100px] "
+                              src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
+                              alt=""
+                            />
+                          </DrawerTitle>
+                          <DrawerDescription>
+                            🚀 Discover the Future of Innovation at
+                            LaStartupClub.Club Event! 🚀
+                          </DrawerDescription>
+                        </DrawerHeader>
+                        <EventGenerator />
+                      </DrawerContent>
+                    </Drawer>
+                  </div>
+                </div>
+                <div className="animate-fade-right animate-once animate-delay-300 rounded-lg overflow-hidden shadow-lg bg-white">
+                  <a></a>
                   <div className="relative">
                     <a>
                       <img
@@ -620,67 +681,6 @@ const ProfilePage: React.FC = () => {
                       Whether youre a seasoned entrepreneur, a budding startup
                       enthusiast, or just curious about the latest trends in the
                       business world, this event is designed for you.
-                    </p>
-                    <Drawer>
-                      <DrawerTrigger className="w-full">
-                        <Button className="text-black animate-fade-right animate-once animate-delay-300 w-full active:bg-slate-100 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
-                          View Details
-                        </Button>
-                      </DrawerTrigger>
-                      <DrawerContent className="h-[95%]">
-                        <DrawerHeader className="flex justify-center items-center flex-col">
-                          <DrawerTitle>
-                            <img
-                              className="animate-fade-right animate-once animate-delay-300  w-[100px] "
-                              src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
-                              alt=""
-                            />
-                          </DrawerTitle>
-                          <DrawerDescription>
-                            🚀 Discover the Future of Innovation at
-                            LaStartupClub.Club Event! 🚀
-                          </DrawerDescription>
-                        </DrawerHeader>
-                        <EventGenerator />
-                      </DrawerContent>
-                    </Drawer>
-                  </div>
-                </div>
-                <div className="animate-fade-right animate-once animate-delay-300 rounded-lg overflow-hidden shadow-lg bg-white">
-                  <a></a>
-                  <div className="animate-fade-right animate-once animate-delay-300 relative">
-                    <a>
-                      <img
-                        className="w-full"
-                        src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/1949084/183054_645045.jpeg"
-                        alt="Sunset in the mountains"
-                      />
-                      <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
-                    </a>
-                    <a>
-                      <div className=" animate-fade-right animate-once animate-delay-300 font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
-                        <img
-                          className="w-[100px] "
-                          src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
-                          alt=""
-                        />
-                      </div>
-                    </a>
-                    <a>
-                      <div className="animate-fade-right animate-once animate-delay-300 text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
-                        <span className="font-bold text-[#111013]">27</span>
-                        <small className="text-[#111013]">March</small>
-                      </div>
-                    </a>
-                  </div>
-                  <div className="px-6 py-4">
-                    <a className=" animate-fade-right animate-once animate-delay-300 font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
-                      Networking Opportunities
-                    </a>
-                    <p className="animate-fade-right animate-once animate-delay-300 text-gray-500 text-[15px] line-clamp-3 ">
-                      Connect with like-minded individuals, entrepreneurs, and
-                      industry experts. Build valuable connections that could
-                      shape the future of your business.
                     </p>
                     <Drawer>
                       <DrawerTrigger className="w-full">
@@ -833,7 +833,10 @@ function EventGenerator() {
 
   return (
     <div className="animate-fade-right animate-once animate-delay-300 w-full flex flex-col justify-center items-center">
-      <Carousel setApi={setApi} className="animate-fade-up animate-once animate-delay-300 w-[70%] max-w-xs">
+      <Carousel
+        setApi={setApi}
+        className="animate-fade-up animate-once animate-delay-300 w-[70%] max-w-xs"
+      >
         <CarouselContent>
           {imageUrls.map((url, index) => (
             <CarouselItem key={index}>
