@@ -832,8 +832,8 @@ function EventGenerator() {
   }, [api]);
 
   return (
-    <div className="w-full flex flex-col justify-center items-center">
-      <Carousel setApi={setApi} className="w-[70%] max-w-xs">
+    <div className="animate-fade-right animate-once animate-delay-300 w-full flex flex-col justify-center items-center">
+      <Carousel setApi={setApi} className="animate-fade-up animate-once animate-delay-300 w-[70%] max-w-xs">
         <CarouselContent>
           {imageUrls.map((url, index) => (
             <CarouselItem key={index}>
@@ -858,18 +858,18 @@ function EventGenerator() {
       <div className="md:flex-1 px-4">
         <div className="flex items-center space-x-4 my-4">
           <div>
-            <div className="rounded-lg bg-gray-100 flex py-2 px-3">
+            <div className="animate-fade-right animate-once animate-delay-300 rounded-lg bg-gray-100 flex py-2 px-3">
               <span className="text-indigo-400 mr-1 mt-1">10</span>
               <span className="font-bold text-indigo-600 text-3xl">Mai</span>
             </div>
           </div>
-          <div className="flex-1">
+          <div className="animate-fade-right animate-once animate-delay-300 flex-1">
             <p className="text-green-500 text-xl font-semibold">PopCard Show</p>
             <p className="text-gray-400 text-sm">💡 Promo Code</p>
           </div>
         </div>
 
-        <p className="text-gray-500">
+        <p className="text-gray-500 animate-fade-right animate-once animate-delay-300">
           Join us for an exciting and insightful event hosted by
           LaStartupClub.Club, where innovation meets inspiration! Whether youre
           a seasoned entrepreneur, a budding startup enthusiast, or just curious
