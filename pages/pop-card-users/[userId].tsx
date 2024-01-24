@@ -351,7 +351,7 @@ const ProfilePage: React.FC = () => {
           <div className="w-[100%]  flex justify-center items-center flex-col bg-gray-200 ">
             <Tabs
               defaultValue="profile"
-              className="w-[90%] flex justify-center items-center flex-col bg-gray-200 "
+              className="w-[90%] flex justify-center items-center flex-col bg-gray-200"
             >
               <TabsList className="w-[100%] shadow flex justify-evenly items-center h-30 animate-fade-right animate-delay-300">
                 <TabsTrigger
@@ -401,8 +401,8 @@ const ProfilePage: React.FC = () => {
                   <MdOutlineEventAvailable className="w-6 h-6" />
                 </TabsTrigger>
               </TabsList>
-              <TabsContent value="profile" className="w-[100%] mb-5">
-                <div className="bg-white p-5 rounded-2xl animate-fade-up animate-delay-300">
+              <TabsContent value="profile" className="w-[100%] mb-5 grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 ">
+                <div className="bg-white p-5 rounded-2xl animate-fade-up animate-delay-300 mt-[5px]">
                   <div className="font-sans leading-20 text-[#0d0d0d] text-[18px] font-[600] mb-2">
                     Contact
                   </div>
@@ -607,7 +607,7 @@ const ProfilePage: React.FC = () => {
                   </div>
                 )}
               </TabsContent>
-              <TabsContent value="about" className="w-[100%] mb-10">
+              <TabsContent value="about" className="w-[100%] mb-5 -mt-3">
                 <div className="bg-white p-5 rounded-2xl animate-fade-up animate-delay-300">
                   <div className="font-sans leading-20 text-[#0d0d0d] text-[18px] font-[600] mb-2">
                     About me
@@ -617,7 +617,7 @@ const ProfilePage: React.FC = () => {
                   </div>
                 </div>
               </TabsContent>
-              <TabsContent value="event" className="w-[100%]">
+              <TabsContent value="event" className="w-[100%] -mt-3">
                 <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5 mb-5">
                   {/* Card 1 */}
                   <div className="animate-fade-up animate-once animate-delay-300 rounded-lg overflow-hidden shadow-lg bg-white">
