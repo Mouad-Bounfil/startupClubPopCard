@@ -266,9 +266,9 @@ const ProfilePage: React.FC = () => {
 
   return (
     <>
-    <div className="w-full h-full">
-      <div className="w-full h-[90%] flex flex-col justify-start items-center bg-gray-200">
-        <div className="w-[90%] flex justify-between items-center mt-5 pl-1 pr-1">
+    <div className="w-full h-screen flex flex-col justify-between items-center">
+      <div className="w-full flex gap-3 flex-col justify-start items-center bg-gray-200">
+        <div className="w-[90%] flex justify-between items-center mt-3 pl-1 pr-1">
           <a href="https://www.lastartup.club/">
             <img
               className="h-[40px] animate-fade-up animate-once animate-delay-100"
@@ -296,7 +296,7 @@ const ProfilePage: React.FC = () => {
             </DrawerContent>
           </Drawer>
         </div>
-        <div className=" w-[90%] shadow mt-2 bg-whititeme  rounded-[15px] text-gray-900 animate-fade-up animate-delay-300 bg-white">
+        <div className=" w-[90%] shadow bg-whititeme  rounded-[15px] text-gray-900 animate-fade-up animate-delay-300 bg-white">
           <div className="rounded-t-[15px] h-32 overflow-hidden animate-fade-up animate-once animate-delay-300">
             <img
               className="object-cover object-top w-full"
@@ -340,7 +340,7 @@ const ProfilePage: React.FC = () => {
             sendEmail={sendEmail}
           />
         </div>
-        <div className="w-[100%] mt-3 flex justify-center items-center flex-col bg-gray-200 ">
+        <div className="w-[100%]  flex justify-center items-center flex-col bg-gray-200 ">
           <Tabs
             defaultValue="profile"
             className="w-[90%] flex justify-center items-center flex-col bg-gray-200 "
@@ -725,7 +725,7 @@ const ProfilePage: React.FC = () => {
           </Tabs>
         </div>
       </div>
-      <div className="h-[10%] custom-shadow-gray  w-[100%] pt-3 pb-3 sticky bottom-0 right-0 opacity-1 flex bg-white justify-center items-center border-2 border-solid border-[#eeebee]">
+      <div className="custom-shadow-gray  w-[100%] pt-3 pb-3 sticky bottom-0 right-0 opacity-1 flex bg-white justify-center items-center border-2 border-solid border-[#eeebee]">
           <div className=" animate-fade-up animate-once animate-delay-300 w-[100%] bg-white flex justify-between items-center pt-1 pb-1 pl-5 pr-5 ">
             <Button
               onClick={downloadVcf}
@@ -759,7 +759,7 @@ const ProfilePage: React.FC = () => {
               </Button>
             </RWebShare>
           </div>
-      </div>
+      </div>  
     </div> 
     </>
   );
