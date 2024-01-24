@@ -722,7 +722,7 @@ const ProfilePage: React.FC = () => {
             </TabsContent>
           </Tabs>
         </div>
-        <div className="custom-shadow-gray  w-[100%] pt-3 pb-3 sticky bottom-0 right-0 opacity-1 flex bg-white justify-center items-center border-2 border-solid border-[#eeebee]">
+        <div className="custom-shadow-gray  w-[100%] pt-3 pb-3 relative bottom-0 right-0 opacity-1 flex bg-white justify-center items-center border-2 border-solid border-[#eeebee]">
           <div className=" animate-fade-up animate-once animate-delay-300 w-[100%] bg-white flex justify-between items-center pt-1 pb-1 pl-5 pr-5 ">
             <Button
               onClick={downloadVcf}
