@@ -279,7 +279,7 @@ const ProfilePage: React.FC = () => {
             <DrawerTrigger>
               <BsQrCode className="w-8 h-8" />
             </DrawerTrigger>
-            <DrawerContent className="h-[50%]">
+            <DrawerContent className="h-[70%]">
               <DrawerHeader className="flex justify-center items-center flex-col">
                 <DrawerTitle>Qr Code Generator</DrawerTitle>
                 <DrawerDescription>
@@ -627,7 +627,7 @@ const ProfilePage: React.FC = () => {
                           View Details
                         </Button>
                       </DrawerTrigger>
-                      <DrawerContent className="h-[90%]">
+                      <DrawerContent className="h-[95%]">
                         <DrawerHeader className="flex justify-center items-center flex-col">
                           <DrawerTitle>
                             <img
@@ -688,7 +688,7 @@ const ProfilePage: React.FC = () => {
                           View Details
                         </Button>
                       </DrawerTrigger>
-                      <DrawerContent className="h-[90%]">
+                      <DrawerContent className="h-[95%]">
                         <DrawerHeader className="flex justify-center items-center flex-col">
                           <DrawerTitle>
                             <img
