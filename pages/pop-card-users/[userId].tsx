@@ -266,7 +266,8 @@ const ProfilePage: React.FC = () => {
 
   return (
     <>
-      <div className="w-full h-screen flex flex-col justify-start items-center bg-gray-200">
+    <div className="w-full h-full">
+      <div className="w-full h-[100%] flex flex-col justify-start items-center bg-gray-200">
         <div className="w-[90%] flex justify-between items-center mt-5 pl-1 pr-1">
           <a href="https://www.lastartup.club/">
             <img
@@ -308,7 +309,7 @@ const ProfilePage: React.FC = () => {
               className="object-cover object-center h-32 w-full"
               src={data?.data?.profilePic}
               alt="Woman looking front"
-            />: <img className="h-32 w-full" src={`https://ui-avatars.com/api/?name=${data?.data?.firstName}+${data?.data?.lastName}&color=0e0e0e&background=a0a0a0`}/>}
+            />: <img className="object-cover object-center h-32 w-full" src={`https://ui-avatars.com/api/?name=${data?.data?.firstName}+${data?.data?.lastName}&color=fff&background=a0a0a0`}/>}
           </div>
           <div className="text-center flex flex-col justify-center items-center mt-2">
             <h3 className="font-sans leading-20 text-[#0d0d0d] text-[25px] font-semibold animate-fade-up animate-once animate-delay-300">
@@ -723,7 +724,6 @@ const ProfilePage: React.FC = () => {
             </TabsContent>
           </Tabs>
         </div>
-        
       </div>
       <div className="custom-shadow-gray  w-[100%] pt-3 pb-3 sticky bottom-0 right-0 opacity-1 flex bg-white justify-center items-center border-2 border-solid border-[#eeebee]">
           <div className=" animate-fade-up animate-once animate-delay-300 w-[100%] bg-white flex justify-between items-center pt-1 pb-1 pl-5 pr-5 ">
@@ -759,7 +759,10 @@ const ProfilePage: React.FC = () => {
               </Button>
             </RWebShare>
           </div>
-        </div>
+      </div>
+    </div>
+      
+      
     </>
   );
 };
