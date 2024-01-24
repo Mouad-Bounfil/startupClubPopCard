@@ -875,9 +875,7 @@ function EventGenerator() {
         <p className="text-gray-500 animate-fade-right animate-once animate-delay-300">
           Join us for an exciting and insightful event hosted by
           LaStartupClub.Club, where innovation meets inspiration! Whether youre
-          a seasoned entrepreneur, a budding startup enthusiast, or just curious
-          about the latest trends in the business world, this event is designed
-          for you.
+          a seasoned entrepreneur, a budding startup enthusiast.
         </p>
       </div>
     </div>
