@@ -612,13 +612,14 @@ const ProfilePage: React.FC = () => {
                   </div>
                   <div className="px-6 py-4 ">
                     <a className="animate-fade-right animate-once animate-delay-300 font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
-                      Best View in Newyork City
+                      Discover the Future of Innovation
                     </a>
                     <p className="animate-fade-right animate-once animate-delay-300 text-gray-500 text-[15px] line-clamp-3 ">
-                      The city that never sleeps The city that never sleepsThe
-                      city that never sleeps The city that never sleeps The city
-                      that never sleeps The city that never sleepsThe city that
-                      never sleeps The city that never sleeps
+                      Join us for an exciting and insightful event hosted by
+                      LaStartupClub.Club, where innovation meets inspiration!
+                      Whether you're a seasoned entrepreneur, a budding startup
+                      enthusiast, or just curious about the latest trends in the
+                      business world, this event is designed for you.
                     </p>
                     <Drawer>
                       <DrawerTrigger className="w-full">
@@ -628,13 +629,16 @@ const ProfilePage: React.FC = () => {
                       </DrawerTrigger>
                       <DrawerContent className="h-[90%]">
                         <DrawerHeader className="flex justify-center items-center flex-col">
-                          <DrawerTitle><img
-                          className="animate-fade-right animate-once animate-delay-300  w-[100px] "
-                          src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
-                          alt=""
-                        /></DrawerTitle>
+                          <DrawerTitle>
+                            <img
+                              className="animate-fade-right animate-once animate-delay-300  w-[100px] "
+                              src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
+                              alt=""
+                            />
+                          </DrawerTitle>
                           <DrawerDescription>
-                          🚀 Discover the Future of Innovation at LaStartupClub.Club Event! 🚀
+                            🚀 Discover the Future of Innovation at
+                            LaStartupClub.Club Event! 🚀
                           </DrawerDescription>
                         </DrawerHeader>
                         <EventGenerator />
@@ -671,13 +675,12 @@ const ProfilePage: React.FC = () => {
                   </div>
                   <div className="px-6 py-4">
                     <a className=" animate-fade-right animate-once animate-delay-300 font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
-                      Best View in Newyork City
+                      Networking Opportunities
                     </a>
                     <p className="animate-fade-right animate-once animate-delay-300 text-gray-500 text-[15px] line-clamp-3 ">
-                      The city that never sleeps The city that never sleepsThe
-                      city that never sleeps The city that never sleeps The city
-                      that never sleeps The city that never sleepsThe city that
-                      never sleeps The city that never sleeps
+                      Connect with like-minded individuals, entrepreneurs, and
+                      industry experts. Build valuable connections that could
+                      shape the future of your business.
                     </p>
                     <Drawer>
                       <DrawerTrigger className="w-full">
@@ -687,13 +690,16 @@ const ProfilePage: React.FC = () => {
                       </DrawerTrigger>
                       <DrawerContent className="h-[90%]">
                         <DrawerHeader className="flex justify-center items-center flex-col">
-                          <DrawerTitle><img
-                          className="animate-fade-right animate-once animate-delay-300  w-[100px] "
-                          src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
-                          alt=""
-                        /></DrawerTitle>
+                          <DrawerTitle>
+                            <img
+                              className="animate-fade-right animate-once animate-delay-300  w-[100px] "
+                              src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
+                              alt=""
+                            />
+                          </DrawerTitle>
                           <DrawerDescription>
-                          🚀 Discover the Future of Innovation at LaStartupClub.Club Event! 🚀
+                            🚀 Discover the Future of Innovation at
+                            LaStartupClub.Club Event! 🚀
                           </DrawerDescription>
                         </DrawerHeader>
                         <EventGenerator />
@@ -850,24 +856,27 @@ function EventGenerator() {
         <CarouselNext />
       </Carousel>
       <div className="md:flex-1 px-4">
-        
         <div className="flex items-center space-x-4 my-4">
           <div>
             <div className="rounded-lg bg-gray-100 flex py-2 px-3">
-              <span className="text-indigo-400 mr-1 mt-1">$</span>
-              <span className="font-bold text-indigo-600 text-3xl">25</span>
+              <span className="text-indigo-400 mr-1 mt-1">10</span>
+              <span className="font-bold text-indigo-600 text-3xl">Mai</span>
             </div>
           </div>
           <div className="flex-1">
-            <p className="text-green-500 text-xl font-semibold">Save 12%</p>
-            <p className="text-gray-400 text-sm">Inclusive of all Taxes.</p>
+            <p className="text-green-500 text-xl font-semibold">PopCard Show</p>
+            <p className="text-gray-400 text-sm">💡 Promo Code</p>
           </div>
         </div>
 
-        <p className="text-gray-500">Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae exercitationem porro saepe ea harum corrupti vero id laudantium enim, libero blanditiis expedita cupiditate a est.</p>
-
-        
-        </div>
+        <p className="text-gray-500">
+          Join us for an exciting and insightful event hosted by
+          LaStartupClub.Club, where innovation meets inspiration! Whether you're
+          a seasoned entrepreneur, a budding startup enthusiast, or just curious
+          about the latest trends in the business world, this event is designed
+          for you.
+        </p>
+      </div>
     </div>
   );
 }
