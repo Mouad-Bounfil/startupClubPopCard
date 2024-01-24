@@ -617,7 +617,7 @@ const ProfilePage: React.FC = () => {
                     <p className="animate-fade-right animate-once animate-delay-300 text-gray-500 text-[15px] line-clamp-3 ">
                       Join us for an exciting and insightful event hosted by
                       LaStartupClub.Club, where innovation meets inspiration!
-                      Whether you're a seasoned entrepreneur, a budding startup
+                      Whether youre a seasoned entrepreneur, a budding startup
                       enthusiast, or just curious about the latest trends in the
                       business world, this event is designed for you.
                     </p>
@@ -871,7 +871,7 @@ function EventGenerator() {
 
         <p className="text-gray-500">
           Join us for an exciting and insightful event hosted by
-          LaStartupClub.Club, where innovation meets inspiration! Whether you're
+          LaStartupClub.Club, where innovation meets inspiration! Whether youre
           a seasoned entrepreneur, a budding startup enthusiast, or just curious
           about the latest trends in the business world, this event is designed
           for you.
