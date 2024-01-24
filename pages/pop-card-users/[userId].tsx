@@ -401,8 +401,8 @@ const ProfilePage: React.FC = () => {
                   <MdOutlineEventAvailable className="w-6 h-6" />
                 </TabsTrigger>
               </TabsList>
-              <TabsContent value="profile" className="w-[100%] mb-5 grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 ">
-                <div className="bg-white p-5 rounded-2xl animate-fade-up animate-delay-300 mt-[5px]">
+              <TabsContent value="profile" className="w-[100%] mb-5 grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-2 gap-3 pt-2">
+                <div className="bg-white p-5 rounded-2xl animate-fade-up animate-delay-300 ">
                   <div className="font-sans leading-20 text-[#0d0d0d] text-[18px] font-[600] mb-2">
                     Contact
                   </div>
@@ -518,7 +518,7 @@ const ProfilePage: React.FC = () => {
                 </div>
                 {data?.data?.experiences &&
                   data?.data?.experiences.length !== 0 && (
-                    <div className="bg-white p-5 rounded-2xl mt-3 animate-fade-up animate-delay-300">
+                    <div className="bg-white p-5 rounded-2xl animate-fade-up animate-delay-300 ">
                       <div className="font-sans leading-20 text-[#0d0d0d] text-[18px] font-[600] mb-2">
                         Work
                       </div>
@@ -589,7 +589,7 @@ const ProfilePage: React.FC = () => {
                     </div>
                   )}
                 {data?.data?.videoPresentation && (
-                  <div className="bg-white p-5 rounded-2xl mt-3 animate-fade-up animate-delay-300">
+                  <div className="bg-white p-5 rounded-2xl animate-fade-up animate-delay-300">
                     <div className="font-sans leading-20 text-[#0d0d0d] text-[18px] font-[600] mb-2">
                       Media
                     </div>
@@ -607,7 +607,7 @@ const ProfilePage: React.FC = () => {
                   </div>
                 )}
               </TabsContent>
-              <TabsContent value="about" className="w-[100%] mb-5 -mt-3">
+              <TabsContent value="about" className="w-[100%] mb-5 -mt-5">
                 <div className="bg-white p-5 rounded-2xl animate-fade-up animate-delay-300">
                   <div className="font-sans leading-20 text-[#0d0d0d] text-[18px] font-[600] mb-2">
                     About me
@@ -617,7 +617,7 @@ const ProfilePage: React.FC = () => {
                   </div>
                 </div>
               </TabsContent>
-              <TabsContent value="event" className="w-[100%] -mt-3">
+              <TabsContent value="event" className="w-[100%] -mt-5">
                 <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5 mb-5">
                   {/* Card 1 */}
                   <div className="animate-fade-up animate-once animate-delay-300 rounded-lg overflow-hidden shadow-lg bg-white">
