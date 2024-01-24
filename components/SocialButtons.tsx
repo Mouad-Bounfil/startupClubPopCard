@@ -96,7 +96,7 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
           >
             <Button
               onClick={onClick}
-              className="animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-4 bg-white text-[#1d1d1d] border-[1px] border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
+              className="animate-fade-up animate-delay-300 flex justify-between items-center gap-2 p-4 bg-white text-[#1d1d1d] border-[1px] border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
             >
               {icon}
               <span className="text-[16px]">{text}</span>
@@ -112,7 +112,7 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
           >
             <Button
               onClick={onClick}
-              className="animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-4 bg-white text-[#1d1d1d] border-[1px] border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
+              className="animate-fade-up animate-delay-300 flex justify-between items-center gap-2 p-4 bg-white text-[#1d1d1d] border-[1px] border-solid hover:bg-gray-200 border-[#ececec] rounded-[10px]"
             >
               {icon}
               <span className="text-[17px]">{text}</span>
@@ -123,7 +123,7 @@ const SocialButtons = ({ data, phone ,sendMessageWa, sendEmail }) => {
       {!showAllButtons && socialButtons.length > 4 && (
         <Button
           onClick={() => setShowAllButtons(true)}
-          className="rounded-full animate-fade-right animate-delay-300 flex justify-between items-center gap-2 p-2 bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] "
+          className="rounded-full animate-fade-up animate-delay-300 flex justify-between items-center gap-2 p-2 bg-white text-[#1d1d1d] border-2 border-solid hover:bg-gray-200 border-[#ececec] "
         >
           <TfiMoreAlt />
         </Button>

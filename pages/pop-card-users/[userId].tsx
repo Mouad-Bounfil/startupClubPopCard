@@ -8,7 +8,7 @@ import vcf from "vcf";
 import { RWebShare } from "react-web-share";
 import { FaWhatsapp, FaGithub, FaFacebookF } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
-import { MdExpandMore } from "react-icons/md";
+import { MdExpandMore  } from "react-icons/md";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -294,15 +294,15 @@ const ProfilePage: React.FC = () => {
             </DrawerContent>
           </Drawer>
         </div>
-        <div className=" w-[90%] shadow mt-2 bg-whititeme  rounded-[15px] text-gray-900 animate-fade-right animate-delay-300 bg-white">
-          <div className="rounded-t-[15px] h-32 overflow-hidden animate-fade-down animate-once animate-delay-300">
+        <div className=" w-[90%] shadow mt-2 bg-whititeme  rounded-[15px] text-gray-900 animate-fade-up animate-delay-300 bg-white">
+          <div className="rounded-t-[15px] h-32 overflow-hidden animate-fade-up animate-once animate-delay-300">
             <img
               className="object-cover object-top w-full"
               src="https://firebasestorage.googleapis.com/v0/b/ecommerce-arkx.appspot.com/o/bg.PNG?alt=media&token=7f137af0-c6aa-4fca-baf0-dba61c1352dc"
               alt="Mountain"
             />
           </div>
-          <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden animate-fade-right animate-delay-300">
+          <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden animate-fade-up animate-delay-300">
             <img
               className="object-cover object-center h-32 w-full"
               src={data?.data?.profilePic}
@@ -310,7 +310,7 @@ const ProfilePage: React.FC = () => {
             />
           </div>
           <div className="text-center flex flex-col justify-center items-center mt-2">
-            <h3 className="font-sans leading-20 text-[#0d0d0d] text-[25px] font-semibold animate-fade-left animate-once animate-delay-300">
+            <h3 className="font-sans leading-20 text-[#0d0d0d] text-[25px] font-semibold animate-fade-up animate-once animate-delay-300">
               {data?.data?.firstName} {data?.data?.lastName}
             </h3>
             <div className="font-sans text-[#595b5a] text-[17px] font-medium animate-fade-up animate-delay-300">
@@ -318,12 +318,15 @@ const ProfilePage: React.FC = () => {
               <span className="text-[#0d0d0d]">LaStartupClub</span>
             </div>
             <div className="text-center font-sans text-[#595b5a] text-[17px] font-[400] w-[85%] mt-3 animate-fade-up animate-delay-300">
-              {data?.data?.shortDescription.en ? (
-                data?.data?.shortDescription.en
-              ) : (
+              {data?.data?._id == "659e919f76de2a9e6d5cefab"? (
                 <div>
                   I code dreams into reality with a touch of flair – MERN Stack
-                  Enthusiast 💻✨ | JavaScript Maestro 🚀{" "}
+                Enthusiast 💻✨ | JavaScript Maestro 🚀{" "}
+                </div>
+                
+              ) : (
+                <div>
+                  {data?.data?.shortDescription.en}
                 </div>
               )}
             </div>
@@ -535,15 +538,21 @@ const ProfilePage: React.FC = () => {
                             </Button>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="text-[16px] font-medium text-gray-500 truncate dark:text-white">
+                            <p className="text-black font-medium truncate dark:text-white">
                               {experience.title}
                             </p>
+                            <div className="flex justify-between">
                             <p className="text-[14px]  text-gray-500   dark:text-white">
                               {formatDateRange(
                                 experience?.dateInfos?.start,
                                 experience?.dateInfos?.end
                               )}
                             </p>
+                            <MdExpandMore className={`w-5 h-5 ${expandedState[experience.id]
+                                  ? "hidden"
+                                  : ""}`} /> 
+                              
+                            </div>
                             <p className="text-[14px]  text-gray-500 truncate dark:text-white">
                               {formatCityName(experience?.city)} -{" "}
                               {experience?.country}
