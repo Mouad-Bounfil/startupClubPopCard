@@ -269,7 +269,7 @@ const ProfilePage: React.FC = () => {
         <div className="w-[90%] flex justify-between items-center mt-5 pl-1 pr-1">
           <a href="https://www.lastartup.club/">
             <img
-              className="h-[40px]"
+              className="h-[40px] animate-fade-up animate-once animate-delay-100"
               src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
               alt=""
             />
@@ -277,7 +277,7 @@ const ProfilePage: React.FC = () => {
 
           <Drawer>
             <DrawerTrigger>
-              <BsQrCode className="w-8 h-8" />
+              <BsQrCode className="w-8 h-8 animate-fade-up animate-once animate-delay-100" />
             </DrawerTrigger>
             <DrawerContent className="h-[70%]">
               <DrawerHeader className="flex justify-center items-center flex-col">
@@ -346,7 +346,7 @@ const ProfilePage: React.FC = () => {
                 className="w-[20%] animate-fade-up animate-delay-300"
               >
                 <svg
-                  className="w-5 h-5 "
+                  className="w-5 h-5"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -579,9 +579,9 @@ const ProfilePage: React.FC = () => {
             <TabsContent value="event" className="w-[100%]">
               <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5 mb-5">
                 {/* Card 1 */}
-                <div className="animate-fade-right animate-once animate-delay-300 rounded-lg overflow-hidden shadow-lg bg-white">
+                <div className="animate-fade-up animate-once animate-delay-300 rounded-lg overflow-hidden shadow-lg bg-white">
                   <a></a>
-                  <div className="animate-fade-right animate-once animate-delay-300 relative">
+                  <div className="animate-fade-up animate-once animate-delay-100 relative">
                     <a>
                       <img
                         className="w-full"
@@ -591,7 +591,7 @@ const ProfilePage: React.FC = () => {
                       <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
                     </a>
                     <a>
-                      <div className=" animate-fade-right animate-once animate-delay-300 font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
+                      <div className=" animate-fade-up animate-once animate-delay-300 font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
                         <img
                           className="w-[100px] "
                           src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
@@ -600,24 +600,24 @@ const ProfilePage: React.FC = () => {
                       </div>
                     </a>
                     <a>
-                      <div className="animate-fade-right animate-once animate-delay-300 text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
+                      <div className="animate-fade-up animate-once animate-delay-300 text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
                         <span className="font-bold text-[#111013]">27</span>
                         <small className="text-[#111013]">March</small>
                       </div>
                     </a>
                   </div>
                   <div className="px-6 py-4">
-                    <a className=" animate-fade-right animate-once animate-delay-300 font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
+                    <a className=" animate-fade-up animate-once animate-delay-300 font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
                       Networking Opportunities
                     </a>
-                    <p className="animate-fade-right animate-once animate-delay-300 text-gray-500 text-[15px] line-clamp-3 ">
+                    <p className="animate-fade-up animate-once animate-delay-300 text-gray-500 text-[15px] line-clamp-3 ">
                       Connect with like-minded individuals, entrepreneurs, and
                       industry experts. Build valuable connections that could
                       shape the future of your business.
                     </p>
                     <Drawer>
                       <DrawerTrigger className="w-full">
-                        <Button className="text-black animate-fade-right animate-once animate-delay-300 w-full active:bg-slate-100 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
+                        <Button className="text-black animate-fade-up animate-once animate-delay-300 w-full active:bg-slate-100 mt-4 h-[45px] bg-[#ebebeb] font-[600] text-[16px]">
                           View Details
                         </Button>
                       </DrawerTrigger>
@@ -630,7 +630,7 @@ const ProfilePage: React.FC = () => {
                               alt=""
                             />
                           </DrawerTitle>
-                          <DrawerDescription>
+                          <DrawerDescription className="animate-fade-right animate-once animate-delay-300 ">
                             🚀 Discover the Future of Innovation at
                             LaStartupClub.Club Event! 🚀
                           </DrawerDescription>
@@ -640,19 +640,19 @@ const ProfilePage: React.FC = () => {
                     </Drawer>
                   </div>
                 </div>
-                <div className="animate-fade-right animate-once animate-delay-300 rounded-lg overflow-hidden shadow-lg bg-white">
+                <div className="animate-fade-up animate-once animate-delay-300 rounded-lg overflow-hidden shadow-lg bg-white">
                   <a></a>
                   <div className="relative">
                     <a>
                       <img
-                        className="animate-fade-right animate-once animate-delay-300 w-full"
+                        className="animate-fade-up animate-once animate-delay-100 w-full"
                         src="https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
                         alt="Sunset in the mountains"
                       />
                       <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
                     </a>
                     <a>
-                      <div className="animate-fade-right animate-once animate-delay-300 font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
+                      <div className="animate-fade-up animate-once animate-delay-300 font-bold text-[#111013] rounded-tr-[5px] absolute bottom-0 left-0 bg-gray-100 px-4 py-2 text-sm hover:bg-white hover:text-[#fe9917] transition duration-500 ease-in-out">
                         <img
                           className="animate-fade-right animate-once animate-delay-300  w-[100px] "
                           src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/1949084/991517_558822.png"
@@ -661,21 +661,21 @@ const ProfilePage: React.FC = () => {
                       </div>
                     </a>
                     <a>
-                      <div className="animate-fade-right animate-once animate-delay-300 text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
-                        <span className="animate-fade-right animate-once animate-delay-300 font-bold text-[#111013]">
+                      <div className="animate-fade-up animate-once animate-delay-300 text-sm absolute top-0 right-0 bg-white px-4 text-w rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3  transition duration-500 ease-in-out">
+                        <span className="animate-fade-up animate-once animate-delay-300 font-bold text-[#111013]">
                           27
                         </span>
-                        <small className="animate-fade-right animate-once animate-delay-300 text-[#111013]">
+                        <small className="animate-fade-up animate-once animate-delay-300 text-[#111013]">
                           March
                         </small>
                       </div>
                     </a>
                   </div>
                   <div className="px-6 py-4 ">
-                    <a className="animate-fade-right animate-once animate-delay-300 font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
+                    <a className="animate-fade-up animate-once animate-delay-300 font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
                       Discover the Future of Innovation
                     </a>
-                    <p className="animate-fade-right animate-once animate-delay-300 text-gray-500 text-[15px] line-clamp-3 ">
+                    <p className="animate-fade-up animate-once animate-delay-300 text-gray-500 text-[15px] line-clamp-3 ">
                       Join us for an exciting and insightful event hosted by
                       LaStartupClub.Club, where innovation meets inspiration!
                       Whether youre a seasoned entrepreneur, a budding startup
@@ -697,7 +697,7 @@ const ProfilePage: React.FC = () => {
                               alt=""
                             />
                           </DrawerTitle>
-                          <DrawerDescription>
+                          <DrawerDescription className="animate-fade-right animate-delay-300">
                             🚀 Discover the Future of Innovation at
                             LaStartupClub.Club Event! 🚀
                           </DrawerDescription>
