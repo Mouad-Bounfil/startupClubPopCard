@@ -340,13 +340,13 @@ const ProfilePage: React.FC = () => {
             defaultValue="profile"
             className="w-[90%] flex justify-center items-center flex-col bg-gray-200 "
           >
-            <TabsList className="w-[100%] mb-2 shadow flex justify-evenly items-center h-30 animate-fade-right animate-delay-300">
+            <TabsList className="w-[100%] shadow flex justify-evenly items-center h-30 animate-fade-right animate-delay-300">
               <TabsTrigger
                 value="profile"
                 className="w-[20%] animate-fade-up animate-delay-300"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-5 h-5 "
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
