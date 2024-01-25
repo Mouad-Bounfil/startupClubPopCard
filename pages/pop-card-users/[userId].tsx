@@ -8,7 +8,11 @@ import vcf from "vcf";
 import { RWebShare } from "react-web-share";
 import { FaWhatsapp, FaGithub, FaFacebookF } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
-import { MdExpandMore, MdOutlineBusinessCenter , MdVerifiedUser } from "react-icons/md";
+import {
+  MdExpandMore,
+  MdOutlineBusinessCenter,
+  MdVerifiedUser,
+} from "react-icons/md";
 import { RiExpandRightLine } from "react-icons/ri";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -50,6 +54,7 @@ import {
 import { HiOutlineHashtag } from "react-icons/hi";
 import { GrTechnology } from "react-icons/gr";
 import { SiRelianceindustrieslimited } from "react-icons/si";
+import { IoMdLogIn } from "react-icons/io";
 
 const ProfilePage: React.FC = () => {
   const router = useRouter();
@@ -284,6 +289,13 @@ const ProfilePage: React.FC = () => {
 
   return (
     <>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+        crossorigin="anonymous"
+      />
+
       <div className="w-full h-screen flex flex-col justify-between items-center">
         <div className="w-full flex gap-3 flex-col justify-start items-center bg-gray-200">
           <div className="w-[90%] flex justify-between items-center mt-3 pl-1 pr-1">
@@ -294,25 +306,8 @@ const ProfilePage: React.FC = () => {
                 alt=""
               />
             </a>
-
-            <Drawer>
-              <DrawerTrigger>
-                <BsQrCode className="w-8 h-8 animate-fade-right animate-once animate-delay-100" />
-              </DrawerTrigger>
-              <DrawerContent className="h-[70%]">
-                <DrawerHeader className="flex justify-center items-center flex-col">
-                  <DrawerTitle>Qr Code Generator</DrawerTitle>
-                  <DrawerDescription>
-                    QR Code generation in progress. This is the QR Code for that
-                    website.
-                  </DrawerDescription>
-                </DrawerHeader>
-                <QrCodeGenerator
-                  className="px-4"
-                  dataUser={[data?.data?.fullName, data?.data?._id]}
-                />
-              </DrawerContent>
-            </Drawer>
+            <Button onClick={() => router.push('https://platform.startupsquare.co/auth/login?returnUrl=%2Forgs%2Flastartupstation')} className="bg-[#27252c] shadow rounded-[5px] active:bg-gray-400"><IoMdLogIn className="w-6 h-6 text-white"/> </Button>
+            
           </div>
           <div className=" w-[90%] shadow bg-whititeme  rounded-[15px] text-gray-900 animate-fade-up animate-delay-300 bg-white">
             <div className="rounded-t-[15px] h-32 overflow-hidden animate-fade-up animate-once animate-delay-300">
@@ -336,20 +331,21 @@ const ProfilePage: React.FC = () => {
                 />
               )}
             </div>
-            <div className="text-center flex flex-col justify-center items-center mt-2">
-              <h3 className="font-sans leading-20 text-[#0d0d0d] text-[25px] font-semibold animate-fade-up animate-once animate-delay-300 flex justify-between items-center">
-                <div>
-                  {data?.data?.firstName} {data?.data?.lastName}{" "}
-                </div>
-
-                {data?.data?.investementPortfolioSize?.amount > 0 ? (
+            <div className="flex justify-center ">
+            {data?.data?.investementPortfolioSize?.amount > 0 ? (
                   <DropdownMenu>
                     <DropdownMenuTrigger>
-                      <RiVerifiedBadgeFill className="animate-fade-left  animate-once animate-delay-300  ml-2 text-[#7cacf8]" />
+                      <div
+                        className="tracking-wider   text-white bg-[#ed8936] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold"
+                        title=""
+                      >
+                        <i className="fas fa-award" aria-hidden="true"></i>{" "}
+                        investor
+                      </div>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuLabel className="text-[17px] flex items-center">
-                      <FaRegCircleUser  className="w-5 h-5 mr-2"/> Investor
+                        <FaRegCircleUser className="w-5 h-5 mr-2" /> Investor
                       </DropdownMenuLabel>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem>
@@ -384,13 +380,11 @@ const ProfilePage: React.FC = () => {
                           <div className="w-full flex flex-col justify-between items-start gap-2">
                             <div className="font-[600] text-[15px] flex justify-center items-center ">
                               <SiRelianceindustrieslimited className="w-4 h-4 mr-2 " />{" "}
-                              
                               <span className="relative">
-                              Industries :
+                                Industries :
                                 <span className="absolute bottom-[0.5px] left-0 w-full border-b border-black"></span>
                               </span>
                             </div>{" "}
-                            
                             <div className="flex  items-center flex-wrap ">
                               {data?.data?.investmentInterests?.industries.map(
                                 (technology, index) => (
@@ -414,7 +408,7 @@ const ProfilePage: React.FC = () => {
                             <div className="font-[600] text-[15px] flex justify-center items-center ">
                               <MdOutlineBusinessCenter className="w-5 h-5 mr-2 " />{" "}
                               <span className="relative">
-                              Business Models :
+                                Business Models :
                                 <span className="absolute bottom-[0.5px] left-0 w-full border-b border-black"></span>
                               </span>
                             </div>{" "}
@@ -439,8 +433,13 @@ const ProfilePage: React.FC = () => {
                 ) : data?.data?.averageHoursForCoaching.id !== null ? (
                   <DropdownMenu>
                     <DropdownMenuTrigger>
-                      
-                      <RiVerifiedBadgeFill className="animate-fade-left animate-once animate-delay-300  ml-2 text-[#cbff3a]" />
+                    <div
+                        className="tracking-wider   text-white bg-[#00bcd4] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold "
+                        title=""
+                      >
+                        <i className="fas fa-award" aria-hidden="true"></i>{" "}
+                        coatch
+                      </div> 
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuItem>Coach</DropdownMenuItem>
@@ -449,18 +448,43 @@ const ProfilePage: React.FC = () => {
                 ) : (
                   <DropdownMenu>
                     <DropdownMenuTrigger>
-                      <RiVerifiedBadgeFill className="animate-fade-left animate-once animate-delay-300  ml-2 text text-[#ff9a41]" />
+                    <div
+                        className="tracking-wider   text-white bg-[#22c55e] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold "
+                        title=""
+                      >
+                        <i className="fas fa-award" aria-hidden="true"></i>{" "}
+                        user
+                      </div> 
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuItem>User</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 )}
+            </div>
+            <div className="text-center flex flex-col justify-center items-center ">
+              <h3 className="font-sans leading-20 text-[#0d0d0d] text-[25px] font-semibold animate-fade-up animate-once animate-delay-300 flex justify-between items-center">
+                <div>
+                  {data?.data?.firstName} {data?.data?.lastName}{" "}
+                </div>
+
+                {data?.data?.investementPortfolioSize?.amount > 0 ? (
+                                        <RiVerifiedBadgeFill className="animate-fade-left  animate-once animate-delay-300  ml-2 text-[#7cacf8]" />
+
+                ) : data?.data?.averageHoursForCoaching.id !== null ? (
+                  <RiVerifiedBadgeFill className="animate-fade-left  animate-once animate-delay-300  ml-2 text-[#7cf8ac]" />
+
+                ) : (
+                  <RiVerifiedBadgeFill className="animate-fade-left  animate-once animate-delay-300  ml-2 text-[#f35b5b]" />
+
+                )}
               </h3>
               <div className="font-sans text-[#595b5a] text-[17px] font-medium animate-fade-up animate-delay-300">
-                {data?.data?.jobTitle} {data?.data?.jobTitle && " - "}{" "}
-                <span className="text-[#0d0d0d]">LaStartupClub</span>
+                
+
+                {data?.data?.jobTitle}
               </div>
+
               <div className="text-center font-sans text-[#595b5a] text-[17px] font-[400] w-[85%] mt-3 animate-fade-up animate-delay-300">
                 {data?.data?._id == "659e919f76de2a9e6d5cefab" ? (
                   <div>
