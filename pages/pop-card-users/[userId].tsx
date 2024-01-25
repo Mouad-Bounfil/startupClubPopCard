@@ -345,7 +345,7 @@ const ProfilePage: React.FC = () => {
                 {data?.data?.investementPortfolioSize?.amount > 0 ? (
                   <DropdownMenu>
                     <DropdownMenuTrigger>
-                      <RiVerifiedBadgeFill className="animate-fade-left  animate-ease-in ml-2 text-[#7cacf8]" />
+                      <RiVerifiedBadgeFill className="animate-fade-left  animate-once animate-delay-300  ml-2 text-[#7cacf8]" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuLabel className="text-[17px] flex items-center">
@@ -440,7 +440,7 @@ const ProfilePage: React.FC = () => {
                   <DropdownMenu>
                     <DropdownMenuTrigger>
                       
-                      <RiVerifiedBadgeFill className="animate-fade-left animate-ease-in ml-2 text-[#cbff3a]" />
+                      <RiVerifiedBadgeFill className="animate-fade-left animate-once animate-delay-300  ml-2 text-[#cbff3a]" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuItem>Coach</DropdownMenuItem>
@@ -449,7 +449,7 @@ const ProfilePage: React.FC = () => {
                 ) : (
                   <DropdownMenu>
                     <DropdownMenuTrigger>
-                      <RiVerifiedBadgeFill className="animate-fade-left animate-once animate-ease-in ml-2 text text-[#ff9a41]" />
+                      <RiVerifiedBadgeFill className="animate-fade-left animate-once animate-delay-300  ml-2 text text-[#ff9a41]" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuItem>User</DropdownMenuItem>
