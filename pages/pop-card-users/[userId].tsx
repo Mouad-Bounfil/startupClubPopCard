@@ -55,6 +55,7 @@ import { HiOutlineHashtag } from "react-icons/hi";
 import { GrTechnology } from "react-icons/gr";
 import { SiRelianceindustrieslimited } from "react-icons/si";
 import { IoMdLogIn } from "react-icons/io";
+import { SiOpenbadges } from "react-icons/si";
 
 const ProfilePage: React.FC = () => {
   const router = useRouter();
@@ -289,11 +290,7 @@ const ProfilePage: React.FC = () => {
 
   return (
     <>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-        integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
-      />
+      
 
       <div className="w-full h-screen flex flex-col justify-between items-center">
         <div className="w-full flex gap-3 flex-col justify-start items-center bg-gray-200">
@@ -335,10 +332,10 @@ const ProfilePage: React.FC = () => {
                   <DropdownMenu>
                     <DropdownMenuTrigger>
                       <div
-                        className="tracking-wider   text-white bg-[#ed8936] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold"
+                        className="tracking-wider  flex items-center gap-1 text-white bg-[#ed8936] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold"
                         title=""
                       >
-                        <i className="fas fa-award" aria-hidden="true"></i>{" "}
+                        <SiOpenbadges className="w-4 h-4"/>{" "}
                         investor
                       </div>
                     </DropdownMenuTrigger>
@@ -433,12 +430,12 @@ const ProfilePage: React.FC = () => {
                   <DropdownMenu>
                     <DropdownMenuTrigger>
                     <div
-                        className="tracking-wider   text-white bg-[#00bcd4] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold "
+                        className="tracking-wider  flex items-center gap-1 text-white bg-[#28f2ca] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold"
                         title=""
                       >
-                        <i className="fas fa-award" aria-hidden="true"></i>{" "}
+                        <SiOpenbadges className="w-4 h-4"/>{" "}
                         coatch
-                      </div> 
+                      </div>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuItem>Coach</DropdownMenuItem>
@@ -448,12 +445,12 @@ const ProfilePage: React.FC = () => {
                   <DropdownMenu>
                     <DropdownMenuTrigger>
                     <div
-                        className="tracking-wider   text-white bg-[#22c55e] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold "
+                        className="tracking-wider  flex items-center gap-1 text-white bg-[#5dc71a] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold"
                         title=""
                       >
-                        <i className="fas fa-award" aria-hidden="true"></i>{" "}
+                        <SiOpenbadges className="w-4 h-4"/>{" "}
                         user
-                      </div> 
+                      </div>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuItem>User</DropdownMenuItem>
