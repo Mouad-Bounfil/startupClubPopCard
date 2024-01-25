@@ -8,7 +8,7 @@ import vcf from "vcf";
 import { RWebShare } from "react-web-share";
 import { FaWhatsapp, FaGithub, FaFacebookF } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
-import { MdExpandMore } from "react-icons/md";
+import { MdExpandMore, MdOutlineBusinessCenter , MdVerifiedUser } from "react-icons/md";
 import { RiExpandRightLine } from "react-icons/ri";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -30,13 +30,27 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { LuSendHorizonal } from "react-icons/lu";
-
+import { FaRegUser } from "react-icons/fa6";
 import { FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 import SocialButtons from "@/components/SocialButtons";
 import { MdOutlineEventAvailable } from "react-icons/md";
 import { BsQrCode } from "react-icons/bs";
 import { RiExternalLinkLine } from "react-icons/ri";
 import Image from "next/image";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { FaRegCircleUser } from "react-icons/fa6";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { HiOutlineHashtag } from "react-icons/hi";
+import { GrTechnology } from "react-icons/gr";
+import { SiRelianceindustrieslimited } from "react-icons/si";
+
 const ProfilePage: React.FC = () => {
   const router = useRouter();
   const userId = router.query.userId?.toString() || "";
@@ -323,8 +337,125 @@ const ProfilePage: React.FC = () => {
               )}
             </div>
             <div className="text-center flex flex-col justify-center items-center mt-2">
-              <h3 className="font-sans leading-20 text-[#0d0d0d] text-[25px] font-semibold animate-fade-up animate-once animate-delay-300">
-                {data?.data?.firstName} {data?.data?.lastName}
+              <h3 className="font-sans leading-20 text-[#0d0d0d] text-[25px] font-semibold animate-fade-up animate-once animate-delay-300 flex justify-between items-center">
+                <div>
+                  {data?.data?.firstName} {data?.data?.lastName}{" "}
+                </div>
+
+                {data?.data?.investementPortfolioSize?.amount > 0 ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger>
+                      <RiVerifiedBadgeFill className="animate-fade-up  animate-ease-in ml-2 text-[#7cacf8]" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuLabel className="text-[17px] flex items-center">
+                      <FaRegCircleUser  className="w-5 h-5 mr-2"/> Investor
+                      </DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>
+                        <div className="w-[260px] flex justify-center items-center flex-col ">
+                          <div className="w-full flex flex-col justify-between items-start gap-2">
+                            <div className="font-[600] text-[15px] flex justify-center items-center ">
+                              <GrTechnology className="w-4 h-4 mr-2 " />
+                              <span className="relative">
+                                Technologies :
+                                <span className="absolute bottom-0 left-0 w-full border-b border-black"></span>
+                              </span>
+                            </div>
+                            <div className="flex  items-center flex-wrap ">
+                              {data?.data?.investmentInterests?.technologies.map(
+                                (technology, index) => (
+                                  <span
+                                    key={index}
+                                    className="flex m-1 p-1 items-center text-sm font-medium rounded-[2px] cursor-pointer bg-gray-100 text-black hover:bg-gray-600 hover:text-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-100"
+                                  >
+                                    <HiOutlineHashtag className="w-4 h-4 mr-1" />{" "}
+                                    {technology}
+                                  </span>
+                                )
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>
+                        <div className="w-[260px] flex justify-center items-center flex-col ">
+                          <div className="w-full flex flex-col justify-between items-start gap-2">
+                            <div className="font-[600] text-[15px] flex justify-center items-center ">
+                              <SiRelianceindustrieslimited className="w-4 h-4 mr-2 " />{" "}
+                              
+                              <span className="relative">
+                              Industries :
+                                <span className="absolute bottom-0 left-0 w-full border-b border-black"></span>
+                              </span>
+                            </div>{" "}
+                            
+                            <div className="flex  items-center flex-wrap ">
+                              {data?.data?.investmentInterests?.industries.map(
+                                (technology, index) => (
+                                  <span
+                                    key={index}
+                                    className="flex m-1 p-1 items-center text-sm font-medium rounded-[2px] cursor-pointer bg-gray-100 text-black hover:bg-gray-600 hover:text-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-100"
+                                  >
+                                    <HiOutlineHashtag className="w-4 h-4 mr-1" />{" "}
+                                    {technology}
+                                  </span>
+                                )
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator className="text-[#ff9a16]" />
+                      <DropdownMenuItem>
+                        <div className="w-[260px] flex justify-center items-center flex-col ">
+                          <div className="w-full flex flex-col justify-between items-start gap-2">
+                            <div className="font-[600] text-[15px] flex justify-center items-center ">
+                              <MdOutlineBusinessCenter className="w-5 h-5 mr-2 " />{" "}
+                              <span className="relative">
+                              Business Models :
+                                <span className="absolute bottom-0 left-0 w-full border-b border-black"></span>
+                              </span>
+                            </div>{" "}
+                            <div className="flex  items-center flex-wrap ">
+                              {data?.data?.investmentInterests?.businessModels.map(
+                                (technology, index) => (
+                                  <span
+                                    key={index}
+                                    className="flex m-1 p-1 items-center text-sm font-medium rounded-[2px] cursor-pointer bg-gray-100 text-black hover:bg-gray-600 hover:text-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-100"
+                                  >
+                                    <HiOutlineHashtag className="w-4 h-4 mr-1" />{" "}
+                                    {technology}
+                                  </span>
+                                )
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : data?.data?.averageHoursForCoaching.id !== null ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger>
+                      {" "}
+                      <RiVerifiedBadgeFill className="animate-fade-up animate-ease-in ml-2 text-[#cbff3a]" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem>Coach</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger>
+                      <RiVerifiedBadgeFill className="animate-fade-up animate-once animate-ease-in ml-2 text text-[#ff9a41]" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem>simple</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                )}
               </h3>
               <div className="font-sans text-[#595b5a] text-[17px] font-medium animate-fade-up animate-delay-300">
                 {data?.data?.jobTitle} {data?.data?.jobTitle && " - "}{" "}
@@ -401,7 +532,10 @@ const ProfilePage: React.FC = () => {
                   <MdOutlineEventAvailable className="w-6 h-6" />
                 </TabsTrigger>
               </TabsList>
-              <TabsContent value="profile" className="w-[100%] mb-5 grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-2 gap-3 pt-2">
+              <TabsContent
+                value="profile"
+                className="w-[100%] mb-5 grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-2 gap-3 pt-2"
+              >
                 <div className="bg-white p-5 rounded-2xl animate-fade-up animate-delay-300 ">
                   <div className="font-sans leading-20 text-[#0d0d0d] text-[18px] font-[600] mb-2">
                     Contact
