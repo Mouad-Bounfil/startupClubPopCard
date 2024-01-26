@@ -329,7 +329,7 @@ const ProfilePage: React.FC = () => {
                 />
               )}
             </div>
-            <div className="flex justify-center gap-3 ">
+            <div className="flex justify-center gap-3 mt-1">
             {data?.data?.investementPortfolioSize?.amount > 0 && (
                   <DropdownMenu>
                     <DropdownMenuTrigger>
@@ -429,11 +429,11 @@ const ProfilePage: React.FC = () => {
                     </DropdownMenuContent>
                   </DropdownMenu>
             )}
-            {data?.data?.averageHoursForCoaching.id !== null && (
+            {data?.data?.averageHoursForCoaching?.id && (
                   <DropdownMenu>
                     <DropdownMenuTrigger>
                     <div
-                        className="tracking-wider  flex items-center gap-1 text-white bg-[#36edc8] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold"
+                        className="tracking-wider  flex items-center gap-1 text-white bg-blue-500 px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold"
                         title=""
                       >
                         <SiOpenbadges className="w-4 h-4"/>{" "}
@@ -473,12 +473,11 @@ const ProfilePage: React.FC = () => {
                 {data?.data?.investementPortfolioSize?.amount > 0 ? (
                                         <RiVerifiedBadgeFill className="animate-fade-left  animate-once animate-delay-300  ml-2 text-[#7cacf8]" />
 
-                ) : data?.data?.averageHoursForCoaching.id !== null ? (
+                ) : data?.data?.averageHoursForCoaching?.id  ? (
                   <RiVerifiedBadgeFill className="animate-fade-left  animate-once animate-delay-300  ml-2 text-[#7cf8ac]" />
 
                 ) : (
                   <RiVerifiedBadgeFill className="animate-fade-left  animate-once animate-delay-300  ml-2 text-[#f35b5b]" />
-
                 )}
               </h3>
               <div className="font-sans text-[#595b5a] text-[17px] font-medium animate-fade-up animate-delay-300">
@@ -488,7 +487,7 @@ const ProfilePage: React.FC = () => {
               </div>
 
               <div className="text-center font-sans text-[#595b5a] text-[17px] font-[400] w-[85%] mt-3 animate-fade-up animate-delay-300">
-                {data?.data?._id == "659e919f76de2a9e6d5cefab" ? (
+                {data?.data?._id == "65b398e0fe0f1e97b7e9afb8" ? (
                   <div>
                     I code dreams into reality with a touch of flair – MERN
                     Stack Enthusiast 💻✨ | JavaScript Maestro 🚀{" "}
