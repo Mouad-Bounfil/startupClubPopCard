@@ -56,6 +56,8 @@ import { GrTechnology } from "react-icons/gr";
 import { SiRelianceindustrieslimited } from "react-icons/si";
 import { IoMdLogIn } from "react-icons/io";
 import { SiOpenbadges } from "react-icons/si";
+import { RiShieldUserLine } from "react-icons/ri";
+
 
 const ProfilePage: React.FC = () => {
   const router = useRouter();
@@ -327,8 +329,8 @@ const ProfilePage: React.FC = () => {
                 />
               )}
             </div>
-            <div className="flex justify-center ">
-            {data?.data?.investementPortfolioSize?.amount > 0 ? (
+            <div className="flex justify-center gap-3 ">
+            {data?.data?.investementPortfolioSize?.amount > 0 && (
                   <DropdownMenu>
                     <DropdownMenuTrigger>
                       <div
@@ -426,11 +428,12 @@ const ProfilePage: React.FC = () => {
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
-                ) : data?.data?.averageHoursForCoaching.id !== null ? (
+            )}
+            {data?.data?.averageHoursForCoaching.id !== null && (
                   <DropdownMenu>
                     <DropdownMenuTrigger>
                     <div
-                        className="tracking-wider  flex items-center gap-1 text-white bg-[#28f2ca] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold"
+                        className="tracking-wider  flex items-center gap-1 text-white bg-[#36edc8] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold"
                         title=""
                       >
                         <SiOpenbadges className="w-4 h-4"/>{" "}
@@ -441,22 +444,25 @@ const ProfilePage: React.FC = () => {
                       <DropdownMenuItem>Coach</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
-                ) : (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger>
-                    <div
-                        className="tracking-wider  flex items-center gap-1 text-white bg-[#5dc71a] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold"
-                        title=""
-                      >
-                        <SiOpenbadges className="w-4 h-4"/>{" "}
-                        user
-                      </div>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      <DropdownMenuItem>User</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
                 )}
+            {data?.data?._id !== null && (
+                  <DropdownMenu>
+                  <DropdownMenuTrigger>
+                  <div
+                      className="tracking-wider  flex items-center gap-1 text-white bg-[#22c55e] px-1 py-[1px] text-[12px] rounded leading-loose  font-semibold"
+                      title=""
+                    >
+                      <RiShieldUserLine className="w-4 h-4"/>{" "}
+                      manager
+                    </div>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuItem>Manager</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                )}
+                  
+                
             </div>
             <div className="text-center flex flex-col justify-center items-center ">
               <h3 className="font-sans leading-20 text-[#0d0d0d] text-[25px] font-semibold animate-fade-up animate-once animate-delay-300 flex justify-between items-center">
